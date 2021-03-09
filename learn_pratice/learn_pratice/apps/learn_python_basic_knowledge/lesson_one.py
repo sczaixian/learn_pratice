@@ -501,3 +501,21 @@ print((lambda x, y: x + y)(2, 4))
 # 1-None.
 print([[x for x in range(1, 51)][i:i+3] for i in range(0, 51, 3)])
 
+print('-----------------xx---------------')
+
+import math
+print(math.ceil(5.3))
+
+
+
+print((17 - 1) % 2 == 0)
+
+
+
+
+
+
+
+
+
+
