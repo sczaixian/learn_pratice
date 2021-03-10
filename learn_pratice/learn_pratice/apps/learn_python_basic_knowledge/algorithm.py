@@ -57,6 +57,33 @@ def inner_sort(data):
         print(data)
 
 
+'''
+quick_sort
+稳定性：快排是一种不稳定排序，打乱了之前的相对顺序
+比较性：因为排序时元素之间需要比较，所以是比较排序
+时间复杂度：快排的时间复杂度为O(nlogn)
+空间复杂度：排序时需要另外申请空间，并且随着数列规模增大而增大，其复杂度为：O(nlogn)
+
+归并排序与快排 ：
+    归并排序与快排两种排序思想都是分而治之，但是它们分解和合并的策略不一样：
+    归并是从中间直接将数列分成两个，而快排是比较后将小的放左边大的放右边，
+    所以在合并的时候归并排序还是需要将两个数列重新再次排序，
+    而快排则是直接合并不再需要排序，所以快排比归并排序更高效一些，
+
+快速排序有一个缺点就是对于小规模的数据集性能不是很好。
+'''
+
+def quick_sort(data):
+    if data:
+        mark = data[0]
+        little = [m for m in data if m < mark]
+        big = [x for x in data if x > mark]
+        return quick_sort(little) + [mark] + quick_sort(big)
+    else:
+        return []
+
+
+
 
 
 
@@ -73,6 +100,7 @@ if __name__ == '__main__':
     selection_sort(data_sort[:])
     print('-------------------inner_sort----------------')
     inner_sort(data_sort[:])
-
+    print('-------------------quick_sort----------------')
+    quick_sort(data_sort[:])
 
 
