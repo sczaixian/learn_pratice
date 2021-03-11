@@ -83,7 +83,12 @@ def quick_sort(data):
         return []
 
 
+'''
+shell_sort
+'''
 
+def shell_sort(data):
+    pass
 
 
 
