@@ -85,10 +85,26 @@ def quick_sort(data):
 
 '''
 shell_sort
+希尔排序(Shell Sort)是插入排序的一种。也称缩小增量排序，是直接插入排序算法的一种更高效的改进版本
+最优时间复杂度：根据步长序列的不同而不同 
+最坏时间复杂度：O(n^2) 
+稳定性：不稳定
 '''
 
 def shell_sort(data):
-    pass
+    step = len(data) // 2
+    print(data, step)
+    while step > 0:
+        for i in range(step, len(data)):
+            j = i
+            while j >= step and data[j - step] > data[j]:
+                data[j - step], data[j] = data[j], data[j - step]
+                print(data[j], data[j - step])
+                print(data)
+                j -= step
+        print(data, step)
+        step //= 2
+
 
 
 
@@ -107,5 +123,5 @@ if __name__ == '__main__':
     inner_sort(data_sort[:])
     print('-------------------quick_sort----------------')
     quick_sort(data_sort[:])
-
-
+    print('-------------------shell_sort----------------')
+    shell_sort(data_sort[:])

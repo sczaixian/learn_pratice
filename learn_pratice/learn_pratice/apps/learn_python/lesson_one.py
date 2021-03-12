@@ -454,41 +454,6 @@ print(info)
 # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 # <map object at 0x7f2d4d94f898>
 # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-print('--------------------_ - __ - __xx__ -----私有化----------------------------------')
-
-
-class Const_Test_A:
-    def __method(self):
-        print('This is a method from calss A')
-
-    def _method(self):
-        print('This is a private method from class A')
-
-    def method(self):
-        return self.__method()
-
-    @classmethod
-    def print_info_class_method(cls):
-        print('')
-
-    @staticmethod
-    def print_info_static_method():
-        print('')
-
-
-class Const_Test_B(Const_Test_A):
-    def __method(self):
-        print('This is a method from calss B')
-
-
-# This is a method from calss A
-Const_Test_B().method()
-
-
-
-
-
-
 
 
 '''
@@ -501,8 +466,6 @@ Const_Test_B().method()
 输出    {'a':1}     {'a':1, 'b':2, 'c':3}
 args *args **kwargs   顺序必须一定的  不能颠倒顺序
 '''
-
-
 
 
 def timer(fun):
@@ -707,6 +670,40 @@ print(sorted([36, 5, -12, 9, -21], key=abs, reverse=True))
 
 # print(list(map(lambda x: sorted(x[1]), [('Bob', 75), ('Adam', 92), ('Bart', 66), ('Lisa', 88)])))
 print(sorted([('Bob', 75), ('Adam', 92), ('Bart', 66), ('Lisa', 88)], key=(lambda x: x[1]), reverse=True))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

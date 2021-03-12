@@ -37,6 +37,13 @@ Decorator
 然后返回一个callable对象。
 在Python中一般callable对象都是函数，但也有例外。
 只要某个对象重载了__call__()方法，那么这个对象就是callable的。
+
+@property、@staticmethod、@classmethod和@abstractmethod。
+@staticmethod不需要表示自身对象的self和自身类的cls参数，就跟使用函数一样。
+@classmethod也不需要self参数，但第一个参数需要是表示自身类的cls参数。
+类方法有类变量cls传入，从而可以用cls做一些相关的处理。并且有子类继承时，调用该类方法时，传入的类变量cls是子类，而非父类。
+
+Python的abc提供了@abstractmethod装饰器实现抽象方法，使用@abstractmethod装饰器类将不能被实例化。
 '''
 print('----------------------------decorator-------------------')
 print('-----------第一种--原封不动返回被装饰函数-------------------')
@@ -96,7 +103,11 @@ def say(something):
     print("say {}!".format(something))
 
 
-
+'''
+使用类装饰器能使代码更加简洁。
+比方说有时你只想打印日志到一个文件。而有时你想把引起你注意的问题发送到一个email，
+同时也保留日志，留个记录。这是一个使用继承的场景，我们可以用类来构建装饰器。
+'''
 
 class logit(object):
     def __init__(self, logfile='out.log'):
