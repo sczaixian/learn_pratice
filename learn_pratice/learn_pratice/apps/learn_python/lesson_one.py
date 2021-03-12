@@ -1,7 +1,9 @@
-
-
-
-import os, sys, random, keyword, math, time
+import os
+import sys
+import math
+import time
+import random
+import keyword
 from functools import reduce, wraps
 from collections.abc import Iterable, Iterator
 

@@ -122,7 +122,8 @@ class logit(object):
             try:
                 with open(self.logfile, 'a') as opened_file:
                     # 现在将日志打到指定的文件
-                    opened_file.write(log_string + '\n')
+                    # opened_file.write(log_string + '\n')
+                    pass
             except IOError as e:
                 print(e)
             # 现在，发送一个通知
