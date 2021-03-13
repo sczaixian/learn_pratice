@@ -1,38 +1,46 @@
 # coding=utf-8
-from threading import Lock
-from functools import wraps
 import time
+from functools import wraps
+
+'''
+结构型模式
+    适配器模式
+    修饰器模式
+    外观模式
+    享元模式
+    模型-视图-控制器模式
+    代理模式
+'''
 
 
 '''
-singleton
+adaptee
+适配器模式是指是一种接口适配技术，它可通过某个类来使用另一个接口与之不兼容的类，运用此模式，两个类的接口都无需改动。
+适配器模式主要应用于希望复用一些现存的类，但是接口又与复用环境要求不一致的情况
 '''
 
-print('----------------------------singleton-------------------')
-class Singleton:
-    _instance_lock = Lock()
-    _init_lock = Lock()
+class Target(object):
+    def request(self):
+        pass
 
-    def __new__(cls, *args, **kwargs):
-        with Singleton._instance_lock:
-            if not hasattr(Singleton, '_instance'):
-                Singleton._instance = object.__new__(cls)
-                print('----new---')
-        return Singleton._instance
 
+class Adaptee(object):
+    def specific_request(self):
+        pass
+
+
+class Adapter(Adaptee):
     def __init__(self):
-        with Singleton._init_lock:
-            if not hasattr(Singleton, '_first_init'):
-                Singleton._first_init = True
-                print('-----init-----')
+        self.adaptee = Adaptee()
 
-
-test_singleton = Singleton()
-test_singleton2 = Singleton()
+    def request(self):
+        self.adaptee.specific_request()
 
 
 '''
 Decorator
+修饰器模式通常用于扩展一个对象的功能
+
 装饰器函数 必须接受一个callable对象作为参数，
 然后返回一个callable对象。
 在Python中一般callable对象都是函数，但也有例外。
@@ -58,7 +66,7 @@ def register(fun):
 def test():
     print('----tst-')
 
-test()
+# test()
 
 print('-----------第二种---把被装饰函数替换成新函数 闭包结构的函数------------------')
 
@@ -156,9 +164,11 @@ def myfunc1():
 def myfunc2():
     print("func2")
 
-myfunc1()
-print("-----------------------")
-myfunc2()
+def test_func():
+    myfunc1()
+    print("-----------------------")
+    myfunc2()
+
 
 print('-----------使用functools.wraps装饰器把相关属性从func复制到新函数中------------------')
 
@@ -181,32 +191,59 @@ def do_something2(name):
 print('--result- {}-----name  {}--'.format(do_something2('Mack'), do_something2.__name__))
 
 
+
+
 '''
-Factory
+facade
+
+在面向对象程序设计中，解耦是一种推崇的理念。但事实上由于某些系统中过于复杂，从而增加了客户端与子系统之间的耦合度
 '''
-print('----------------------------factory-------------------')
 
 
-class Benz:
-    def __repr__(self):
-        return 'Benz...'
+print('Facade ....')
 
 
-class AbsFactory:
-    def produce_car(self):
-        pass
+
+'''
+享元模式
+'''
 
 
-class BenzFactory(AbsFactory):
-    def produce_car(self):
-        return Benz()
 
 
-def test_factory():
-    car = BenzFactory().produce_car()
-    print(f'car ---  {car}')
 
 
-test_factory()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

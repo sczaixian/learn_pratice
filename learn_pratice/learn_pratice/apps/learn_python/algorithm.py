@@ -108,6 +108,45 @@ def shell_sort(data):
 
 
 
+'''
+merge_sort
+平均时间复杂度是 O(nlgn)，
+最好情况下的时间复杂度是 O(nlgn)，
+最坏情况下的时间复杂度也是 O(nlgn)。
+它的空间复杂度是 O(1)。
+另外，归并排序还是一个稳定的排序算法
+'''
+
+
+def merge(left, right):
+    # 合并两个有序列表
+    res = []
+    while len(left) > 0 and len(right) > 0:
+        if left[0] < right[0]:
+            res.append(left.pop(0))
+        else:
+            res.append(right.pop(0))
+    if left:
+        res.extend(left)
+    if right:
+        res.extend(right)
+    return res
+
+
+def merge_sort(arr):
+    # 归并函数
+    n = len(arr)
+    if n < 2:
+        return arr
+    middle = n // 2
+    left = arr[:middle]     # 取序列左边部分
+    right = arr[middle:]    # 取序列右边部分
+    # 对左边部分序列递归调用归并函数
+    left_sort = merge_sort(left)
+    # 对右边部分序列递归调用归并函数
+    right_sort = merge_sort(right)
+    #
+    return merge(left_sort, right_sort)
 
 
 
@@ -125,3 +164,5 @@ if __name__ == '__main__':
     quick_sort(data_sort[:])
     print('-------------------shell_sort----------------')
     shell_sort(data_sort[:])
+    print('-------------------merge_sort----------------')
+    merge_sort(data_sort[:])
