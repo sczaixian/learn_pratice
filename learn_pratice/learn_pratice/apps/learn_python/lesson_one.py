@@ -675,8 +675,9 @@ print(sorted([('Bob', 75), ('Adam', 92), ('Bart', 66), ('Lisa', 88)], key=(lambd
 
 
 
+print(1 < 2 == 2)  # ===>  1 < 2 and 2 == 2
 
-
+print('\n'.join([' '.join(['%d*%d=%-2d' % (i, j, i * j) for i in range(1, j + 1)]) for j in range(1, 10)]))
 
 
 
