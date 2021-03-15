@@ -144,12 +144,22 @@ print('-------------------------*args----------------------------------')
 
 def test_args_fun(*args):
     print(args, type(args))
+
+
 test_args_fun(1)
+
+
 def test_args_fun2(x, y, *args):
     print(x, y, args)
+
+
 test_args_fun2(1, 2, 3, 5)
+
+
 def test_kwargs_fun(**kwargs):
     print(kwargs)
+
+
 test_kwargs_fun()
 '''
 (1,) <class 'tuple'>
@@ -248,7 +258,7 @@ def test_str_fun():
 
     # list
     # append()  <--> / extend()   /insert()   /以上操作均为原地修改，不产生新对象
-    # list + list   /list *list   /
+    # list + list   /list * list   /
     ss_1 = [1, 2, 3, 6]  # 利用切片添加添加成段元素
     ss_1[2:2] = [4, 5]
     ss_1.sort(reverse=True)

@@ -19,5 +19,5 @@ from learn_pratice.settings import dev
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/', include(('learn_pratice.apps.blog.urls', 'blog'))),
+    path('', include(('learn_pratice.apps.blog.urls', 'blog'))),
 ]
