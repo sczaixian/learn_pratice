@@ -4,13 +4,20 @@ from .common import *  # NOQA
 DATABASES = {
     'default':{
         'ENGINE':'django.db.backends.mysql',
-        'NAME':'student2',
+        'NAME':'myblog',
         'USER':'python',
         'PASSWORD':'sczaixian',
         'HOST':'127.0.0.1',
         'PORT':'3306',
     }
 }
+
+EMAIL_HOST = ''
+EMAIL_PORT = 465
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_USE_SSL = True
 
 ABSOLOUTE_URL_OVERRIDES = {
     # 'blogs.weblog': lambda o : "/blogs/%s/" % o.slug,
