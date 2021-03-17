@@ -19,8 +19,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.37.128']
 
 
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -30,8 +28,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'learn_pratice.apps'
+    'learn_pratice.apps.blog',
+
 ]
+
+
 
 # 中间件
 MIDDLEWARE = [
@@ -117,7 +118,7 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace("\\", "/")
 
 # # 这个是默认设置，Django 默认会在 STATICFILES_DIRS中的文件夹 和 各app下的static文件夹中找文件
 # # 注意有先后顺序，找到了就不再继续找了
@@ -125,3 +126,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 #     "django.contrib.staticfiles.finders.FileSystemFinder",
 #     "django.contrib.staticfiles.finders.AppDirectoriesFinder"
 # )
+

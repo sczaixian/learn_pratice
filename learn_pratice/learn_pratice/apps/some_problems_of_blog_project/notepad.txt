@@ -1,0 +1,60 @@
+
+pip install xxxxx   网络不可达
+pip install xxxx -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+
+python
+
+bash: python: 未找到命令...
+
+which python
+
+/usr/bin/which : no python in (xxxxxxxx....)
+
+which python3
+
+/usr/bin/python3
+
+$ ln -s /usr/bin/python3 /usr/bin/python
+
+export PATH=/usr/local/mongodb4/bin:$PATH
+
+mongod --dbpath /var/lib/mongo --logpath /var/log/mongodb/mongod.log --fork
+
+
+
+vmware 主机访问虚拟机服务器
+Centos7.0 默认使用firewall作为防火墙，这里改为iptables
+1、关闭firewall
+systemctl stop firewalld.service  #停止firewall
+systemctl disable firewalld.service #禁止Firewalls开机启动
+
+到这可以访问了
+
+https://blog.csdn.net/u010073893/article/details/51793273
+
+
+1、 models 是拆分成不同的文件的，
+2、 需要继承AbstractUser添加一些字段
+
+操作步骤
+1、 定义UserInfo 继承AbstractUser
+2、 setting 中加入 AUTH_USER_MODEL = 项目APP名字.UserInfo
+3、 python manage.py migrate
+4、 出现问题了。AUTH_USER_MODEL refers to model 'blog.UserInfo' that has not been installed
+
+写法都没问题，发现是找不到models
+
+把models文件夹下的__init__ 里面导入拆分的models
+
+在model下面加入 classMeta：   app_lable="项目名"
+
+都OK了
+
+加入AppConfig  name是项目路径
+在__init__加入default_app_config = 'learn_pratice.apps.blog.apps.BlogConfig'
+这样就不用加到INSTALLED_APPS中了
+
+由于之前为了解决继承AbstractUser的问题把admin下面的migrations中的东西删了，
+myblog.django_admin_log' doesn't exist")
+python manage.py makemigrations admin
+python manage.py migrate admin

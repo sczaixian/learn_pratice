@@ -27,5 +27,12 @@ class Singleton(object):
         return Singleton._instance
 
 
+name = 'learn_pratice.apps.blog'
+print(name.rpartition(".")[2])
+print(name.rpartition("."))
+# blog
+# ('learn_pratice.apps', '.', 'blog')
+
+
 
 
