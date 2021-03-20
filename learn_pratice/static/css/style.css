@@ -707,7 +707,7 @@ body, input, button, textarea, select {
 }
  @media (min-width: 767px) {
 .content .comment .comment-title .form-group{
-	width:49%;
+	width:90%;
 }
 .content .comment .comment-title .form-group input{
 	width:80%;
@@ -732,6 +732,19 @@ body, input, button, textarea, select {
 	color: #555;
 	height: 80px;
 }
+
+.content .comment .comment-form .add-article textarea {
+	border: none;
+	width: 100%;
+	font-size: 14px;
+	line-height: 1.5em;
+	outline: none;
+	resize: none;
+	padding: 0;
+	color: #555;
+	height: 280px;
+}
+
 textarea::-webkit-scrollbar {
  width:6px;
  height:6px;

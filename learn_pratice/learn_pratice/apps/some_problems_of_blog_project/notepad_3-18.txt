@@ -1,0 +1,99 @@
+django缓存默认采用内嵌的memcache数据库 - 每次重启项目，缓存就会重置。
+
+而 redis数据库，可以替代memcache数据库作为Django的缓存数据库
+
+# 1）导入缓存功能
+from django.core.cache import cache
+
+# 2）设置，如果将exp过期时间设置0或负值，就是删除缓存
+cache.set(key, value, exp)
+
+# 3）获取
+cache.get(key)
+
+接口缓存
+
+缓存原理：优先找缓存数据，有就走缓存，没有的话就走数据库更新缓存
+1）什么是接口的后台缓存
+    前台访问后台接口，后台会优先从缓存(内存)中查找接口数据
+        如果有数据，直接对前台响应缓存数据
+        如果没有数据，与(mysql)数据库交互，得到数据，对前台响应，同时将数据进行缓存，以备下次使用
+
+    了解：前台缓存 - 前台在请求到接口数据后，在前台建立缓存，再发送同样请求时，发现前台缓存有数据，就不再对后台做请求了
+
+2）什么的接口会进行接口缓存
+    i）接口会被大量访问（比如主页中的接口，几乎所有人都会访问，而且会重复访问）
+    ii）在一定时间内数据比较固定的接口
+    iii）接口数据的时效性不是特别强（数据库数据发生变化了，不是立即同步给前台，验后时间同步给前台也没事）
+    注：理论上所有接口都可以建立缓存，只要数据库与缓存数据同步及时
+
+暂时预留
+https://blog.csdn.net/wanglei_storage/article/details/85250382
+
+
+
+
+# qq IMAP/SMTP 配置
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 25  # 或者 465/587是设置了 SSL 加密方式
+# 发送邮件的邮箱
+EMAIL_HOST_USER = ‘你的邮箱’
+# 在邮箱中设置的客户端授权密码
+EMAIL_HOST_PASSWORD = ‘你的IMAP授权码’  # 如果重新设置了新的授权码,直接使用最新的授权码即可
+EMAIL_USE_TLS = True  # 这里必须是 True，否则发送不成功
+# 收件人看到的发件人, 必须是一直且有效的
+EMAIL_FROM = ‘Tencent<你的邮箱>'
+"""
+# qq POP3/SMTP 配置
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 110  # 或者 995是设置了 SSL 加密方式
+#发送邮件的邮箱
+EMAIL_HOST_USER = '你的qq邮箱'
+#在邮箱中设置的客户端授权密码
+EMAIL_HOST_PASSWORD = '你的pop3授权码'  # 如果重新设置了新的授权码,直接使用最新的授权码即可
+EMAIL_USE_TLS = True  # 这里必须是 True，否则发送不成功
+#收件人看到的发件人
+EMAIL_FROM = ‘Tencent<xxx@qq.com>’
+"""
+
+
+Django默认支持以下5个转化器： 还可以自定义, 这里就不讨论了
+path('articles/2003/', views.special_case_2003),
+path('articles/<int:year>/', views.year_archive),
+path('articles/<int:year>/<int:month>/', views.month_archive),
+path('articles/<int:year>/<int:month>/<slug>/', views.article_detail),
+
+str,匹配除了路径分隔符（/）之外的非空字符串，这是默认的形式
+int,匹配正整数，包含0。
+slug,匹配字母、数字以及横杠、下划线组成的字符串。
+uuid,匹配格式化的uuid，如 075194d3-6885-417e-a8a8-6c931e272f00。
+path,匹配任何非空字符串，包含了路径分隔符
+
+
+
+ajax
+ajax请求django服务器时，请求方式为post 此时若不加csrftoken验证则会报错
+login_register.js
+
+
+
+redirect
+参数可以是:
+一个模型: 将调用模型的get_absolute_url()函数
+一个视图, 可以带有函数:　可以使用urlresolvers.reverse来反向解析名称
+一个绝对的或相对的URL, 将原封不动的作为重定向的位置.
+默认返回一个临时的重定向, 传递permanent=True可以返回一个永久的重定向.
+https://www.icode9.com/content-4-700985.html
+
+
+
+
+
+
+
+
+
+
+

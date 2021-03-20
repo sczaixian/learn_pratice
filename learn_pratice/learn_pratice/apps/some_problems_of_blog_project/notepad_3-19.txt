@@ -1,0 +1,8 @@
+django mysql 中文乱码解决办法
+参考
+https://zhuanlan.zhihu.com/p/115465098
+https://stackoverflow.com/questions/4151822/django-set-storage-engine-default-charset
+
+
+编码
+https://blog.csdn.net/qq_49551075/article/details/107556997

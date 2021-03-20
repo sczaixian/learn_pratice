@@ -1,23 +1,6 @@
 import os
 from django.db import models
-
-# user_directory_path 函数必须接收 instace 和 filename 两个参数。
-# 参数 instace 代表一个定义了 ImageField 的模型的实例，说白了就是当前数据记录；
-# filename 是原本的文件名
-def user_directory_path(instance, filename):
-    print('----------1--------')
-    print(instance)
-    print(filename)
-    print('----------user_directory_path------------')
-    ext = filename.split('.').pop()
-    sub_folder = 'file'
-    if ext.lower() in ['jpg', 'gif', 'png']:
-        sub_folder = 'avatar'
-    if ext.lower() in ['pdf', 'docx']:
-        sub_folder = 'document'
-    filename = '{0}.{1}{2}.{3}'.format(sub_folder, instance.username, instance.identity_card, ext)
-    # 系统路径分隔符差异，增强代码重用性
-    return os.path.join(instance.u_id, filename)
+from learn_pratice.apps.blog.utils.tools import user_directory_path
 
 
 class Photo(models.Model):

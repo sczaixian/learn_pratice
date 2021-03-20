@@ -22,13 +22,37 @@
             <h1 class="logo"><a href="index.html" title="个人技术博客"></a></h1>
             <ul class="nav hidden-xs-nav">
                 <li class="active">
-                    <a href="index.html">
+                    <a href="{% url 'blog:index' %}">
                         <span class="glyphicon glyphicon-home"></span>网站首页
                     </a>
                 </li>
-                <li><a href=""><span class="glyphicon glyphicon-erase"></span>网站前端</a></li>
-                <li><a href=""><span class="glyphicon glyphicon-inbox"></span>后端技术</a></li>
-                <li><a href=""><span class="glyphicon glyphicon-globe"></span>管理系统</a></li>
+                <li>
+                    <a href="{% url 'blog:content' %}">
+                        <span class="glyphicon glyphicon-erase"></span>博文展示
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:add_article_page' %}">
+                        <span class="glyphicon glyphicon-inbox"></span>添加博文
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:logout' %}">
+                        <span class="glyphicon glyphicon-globe"> </span>logout
+                    </a>
+                </li>
+                {% if user %}
+                        <li><span class="glyphicon glyphicon-globe"></span>{{ user.username }}</li>
+                        <li><span class="glyphicon glyphicon-globe"></span>{{ user.email }}</li>
+                        <li><span class="glyphicon glyphicon-globe"></span>{{ user.password }}</li>
+                        <li><span class="glyphicon glyphicon-globe"></span>{{ user.user_id }}</li>
+                        <li><span class="glyphicon glyphicon-globe"></span>{{ user.nice_name }}</li>
+                        <li><span class="glyphicon glyphicon-globe"></span>{{ user.phone_num }}</li>
+                        <li><span class="glyphicon glyphicon-globe"></span>{{ user.identity_card }}</li>
+                        <li><span class="glyphicon glyphicon-globe"></span>{{ user.user_discription }}</li>
+                        <li><span class="glyphicon glyphicon-globe"></span>{{ user.phono }}</li>
+                        <li><span class="glyphicon glyphicon-globe"></span>{{ user.blog_id }}</li>
+                {% endif %}
             </ul>
             <div class="feeds">
                 <form action="comment.php" method="post" class="form-inline" id="comment-form">
@@ -46,7 +70,7 @@
                     <div class="comment-form">
                         <div class="comment-form-footer">
                             <div class="comment-form-btn">
-                                <a class="feed feed-xlweibo" href="" target="_blank"><i></i>注册</a>
+                                <a class="feed feed-xlweibo" href="{% url 'blog:goto_register_page' %}" target="_blank"><i></i>注册</a>
                                 <button type="submit" class="btn btn-default btn-comment">登录</button>
                             </div>
                         </div>
@@ -68,7 +92,7 @@
                 <div class="carousel-inner" role="listbox">
 
                     <div class="item active">
-                        <a href="content.html" target="_blank">
+                        <a href="" target="_blank">
                             <img src="{% static 'images/img1.jpg' %}" alt=""/>
                         </a>
                         <div class="carousel-caption">
@@ -77,7 +101,7 @@
                         <span class="carousel-bg"></span>
                     </div>
                     <div class="item">
-                        <a href="content.html" target="_blank">
+                        <a href="{% url 'blog:content' %}" target="_blank">
                             <img src="{% static 'images/img2.jpg' %}" alt=""/>
                         </a>
                         <div class="carousel-caption">

@@ -32,9 +32,6 @@ INSTALLED_APPS = [
 
 ]
 
-
-
-# 中间件
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -43,7 +40,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.middleware.csrf.CsrfResponseMiddleware',
+    # 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
 ]
+
+
+# 中间件
 
 ROOT_URLCONF = 'learn_pratice.urls'
 

@@ -1,0 +1,10 @@
+From
+enctype就是encodetype就是编码类型的意思。
+
+multipart/form-data是指表单数据有多部分构成，既有文本数据，又有文件等二进制数据的意思。
+
+需要注意的是：默认情况下，enctype的值是application/x-www-form-urlencoded，不能用于文件上传，
+只有使用了multipart/form-data，才能完整的传递文件数据。
+
+application/x-www-form-urlencoded不是不能上传文件，是只能上传文本格式的文件，
+multipart/form-data是将文件以二进制的形式上传，这样可以实现多种类型的文件上传。

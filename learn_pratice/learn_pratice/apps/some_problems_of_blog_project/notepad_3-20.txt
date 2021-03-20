@@ -1,0 +1,55 @@
+
+对于敏感、重要的信息，要储在服务器端
+在服务器端进行状态保持的方案就是Session。
+设置SESSION_ENGINE项指定Session数据存储的方式，可以存储在数据库、缓存、Redis等
+
+存储在数据库中 SESSION_ENGINE='django.contrib.sessions.backends.db'
+存储在缓存中  SESSION_ENGINE='django.contrib.sessions.backends.cache'
+混合存储：优先从本机内存中存取，如果没有则从数据库中存取
+    SESSION_ENGINE='django.contrib.sessions.backends.cached_db'
+
+
+使用Redis存储Session
+    pip install django-redis-sessions==0.5.6
+
+settings文件
+    SESSION_ENGINE = 'redis_sessions.session'
+    SESSION_REDIS_HOST = 'localhost'
+    SESSION_REDIS_PORT = 6379
+    SESSION_REDIS_DB = 2
+    SESSION_REDIS_PASSWORD = ''
+    SESSION_REDIS_PREFIX = 'session'
+
+管理redis的命令
+    查看：ps ajx|grep redis
+    启动：sudo service redis start
+    停止：sudo service redis stop
+    使用客户端连接服务器：redis-cli
+    切换数据库：select 2
+    查看所有的键：keys *
+    获取指定键的值：get name
+
+
+Django JsonResponse 不自动设置 cookie 的解决方案
+https://blog.csdn.net/weixin_30820151/article/details/98454050
+
+
+django  login  auth--->__init__  def login(request, user, backend=None):
+
+session   config--->conf/global_settings.py
+
+多个数据库联用
+django db_router  -----> django.db.utils
+
+# 同步数据库 db1 settings.py中的那个db1
+python manage.py syncdb --database=db1
+python manage.py migrate --database=db1
+
+数据导出
+python manage.py dumpdata app1 --database=db1 > app1_fixture.json
+python manage.py dumpdata app2 --database=db2 > app2_fixture.json
+python manage.py dumpdata auth > auth_fixture.json
+
+数据库导入
+python manage.py loaddata app1_fixture.json --database=db1
+python manage.py loaddata app2_fixture.json --database=db2

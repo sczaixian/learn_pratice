@@ -1,5 +1,8 @@
 
 import socket
+import base64
+import hashlib
+from io import BytesIO
 
 def socket_client():
     p = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -34,5 +37,20 @@ print(name.rpartition("."))
 # ('learn_pratice.apps', '.', 'blog')
 
 
+def value_to_string(value):
+    try:
+        payload_file = BytesIO(value.encode('utf-8'))
+        sha = hashlib.sha1()
+        sha.update(payload_file.read())
 
+        payload_file.seek(0)
+        encoded_string = base64.b64encode(payload_file.read()).decode('utf-8')
+        return encoded_string
+    except IOError as e:
+        return value
+
+
+print(value_to_string('username'))
+print(value_to_string('username'))
+print(value_to_string('usssername'))
 
