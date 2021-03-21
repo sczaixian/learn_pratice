@@ -1,0 +1,28 @@
+
+
+about session --->
+    SESSION_ENGINE  ---> default -->    django.contrib.sessions.backends.db
+    CACHES--> 'BACKEND': django.core.cache.backends.memcached.MemcachedCache
+    SESSION_CACHE_ALIAS-->
+    pip install python-memcached
+
+
+
+
+cache
+drf-extensions  -->http://chibisov.github.io/drf-extensions/docs/#caching
+pip install drf-extensions
+
+
+设置当浏览器关闭时，session失效
+SESSION_EXPIRE_AT_BROWSER_CLOSE=True;//在配置文件配置，可是该方式无效；
+request.session.set_expiry(0);那么当浏览器关闭时，session失效，试验成功
+* 如果value是个整数，session会在些秒数后失效。
+* 如果value是个datatime或timedelta，session就会在这个时间后失效。
+* 如果value是0,用户关闭浏览器session就会失效。//我们用的就是这种方式
+* 如果value是None,session会依赖全局session失效策略
+
+
+<input type="checkbox" name="remember" class="ace" checked/>        --->checked字样，代表刷后新选
+value如果没有设置，则默认value的值是“on”。如果设置，自然value就是设置的值
+value的值和表单是否选中无关。 无论表单是否选中，checkbox的值都是一样的

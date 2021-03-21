@@ -1,12 +1,12 @@
 
 import base64
+import string
 import hashlib
 import warnings
-import string
-from random import SystemRandom
 from io import BytesIO
-from django.utils.deprecation import RemovedInDjango40Warning
+from random import SystemRandom
 from django.dispatch import Signal
+from django.utils.deprecation import RemovedInDjango40Warning
 
 user_logged_in = Signal()
 # user_login_failed = Signal()
@@ -23,7 +23,8 @@ CSRF_ALLOWED_CHARS = string.ascii_letters + string.digits
 NOT_PROVIDED = object()  # RemovedInDjango40Warning.
 
 
-def login_custom(request, user, value):
+def login_blog(request, user, value):
+    print('-----------login_custom_session----------------------')
     session_auth_hash = ''
     if user is None:
         user = request.user
@@ -95,7 +96,17 @@ def value_to_string(value):
         sha.update(payload_file.read())
         payload_file.seek(0)
         encoded_string = base64.b64encode(payload_file.read()).decode('utf-8')
-        return value, encoded_string
+        return encoded_string
     except IOError as e:
         return value
 
+
+def logout_blog(request):
+    user = getattr(request, 'user', None)
+    if not getattr(user, 'is_authenticated', True):
+        user = None
+    user_logged_out.send(sender=user.__class__, request=request, user=user)
+    request.session.flush()
+    if hasattr(request, 'user'):
+        from django.contrib.auth.models import AnonymousUser
+        request.user = AnonymousUser()

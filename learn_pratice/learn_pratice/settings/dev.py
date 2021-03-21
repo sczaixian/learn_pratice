@@ -1,13 +1,21 @@
 from .common import *  # NOQA
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # },
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
-    'blog': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'myblog',
+        'USER': 'python',
+        'PASSWORD': 'sczaixian',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    },
+    'blog2': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'myblog2',
         'USER': 'python',
         'PASSWORD': 'sczaixian',
         'HOST': '127.0.0.1',
@@ -16,11 +24,11 @@ DATABASES = {
 }
 
 DATABASE_ROUTERS = [
-    'learn_pratice.settings.db_routers.BlogRouter',
+    'learn_pratice.settings.db_routers.AppsRouter',
 ]
 
 DATABASE_APPS_MAPPING = {
-    'blog': 'blog',
+    'blog2': 'blog2',
 }
 
 AUTH_USER_MODEL = 'blog.UserInfo'
@@ -38,24 +46,46 @@ ABSOLOUTE_URL_OVERRIDES = {
     # 'blogs.weblog': lambda o : "/blogs/%s/" % o.slug,
 }
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+# SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+# SESSION_ENGINE = 'django.contrib.sessions.backends.cache_db'
+# "django.contrib.sessions.cache"
+
+# SESSION_ENGINE = 'django.contrib.sessions.backends.file'
+# SESSION_FILE_PATH = '/blog_session/uid/'
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     },
     'blog': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
+        'LOCATION': [
+            '127.0.0.1:11211',
+            # 给缓存机器加权重
+            # ('127.xxxxx:port', 5)
+        ]
+    },
+    'file': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': 'cache/file',
+        # 这里给出的是路径，但是更多时候是在项目根目录创建个文件夹，然后直接
+        # os.path.join(BASE_DIR，‘cache/file’)
+    },
+    'redis': {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "CONNECTION_POOL_KWARGS": {"max_connections": 100},
+        }
     }
 }
 
 SESSION_CACHE_ALIAS = 'blog'
-# SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache_db'
-# "django.contrib.sessions.cache"
-
-# SESSION_ENGINE = 'django.contrib.sessions.backends.file'
-# SESSION_FILE_PATH = '/blog_session/uid/'
-
 
 #
 # INSTALLED_APPS = [

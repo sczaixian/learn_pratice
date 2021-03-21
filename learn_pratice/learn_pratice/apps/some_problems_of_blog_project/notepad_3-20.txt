@@ -42,8 +42,8 @@ session   config--->conf/global_settings.py
 django db_router  -----> django.db.utils
 
 # 同步数据库 db1 settings.py中的那个db1
-python manage.py syncdb --database=db1
-python manage.py migrate --database=db1
+python manage.py syncdb --database db1
+python manage.py migrate --database db1
 
 数据导出
 python manage.py dumpdata app1 --database=db1 > app1_fixture.json
@@ -51,5 +51,5 @@ python manage.py dumpdata app2 --database=db2 > app2_fixture.json
 python manage.py dumpdata auth > auth_fixture.json
 
 数据库导入
-python manage.py loaddata app1_fixture.json --database=db1
-python manage.py loaddata app2_fixture.json --database=db2
+python manage.py loaddata app1_fixture.json --database db1
+python manage.py loaddata app2_fixture.json --database db2

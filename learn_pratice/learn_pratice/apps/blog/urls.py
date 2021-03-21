@@ -17,4 +17,5 @@ urlpatterns=[
     path('init_content/', redirect.init_content, name='content'),
     path('add_article_page/', redirect.add_article_page, name='add_article_page'),
     path('goto_register_page/', redirect.goto_register_page, name='goto_register_page'),
+    path('init_blog/', redirect.init_blog, name='init_blog'),
 ]

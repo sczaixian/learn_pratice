@@ -9,10 +9,11 @@ $("#btn_login").click(function () {
             'csrfmiddlewaretoken': $('[name="csrfmiddlewaretoken"]').val(),
         },
         success: function (data) {
+            // alert(data.username)
             console.log(data);
             if (data.username) {
-                location.href = '/blog/'
-
+                window.location.href = '/blog/'
+                // window.location.href = '/blog/init_blog/'
             } else {
                 if (data.msg) {
                     // alert(data.msg)

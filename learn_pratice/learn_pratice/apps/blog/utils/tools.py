@@ -4,9 +4,10 @@ import hashlib
 # import environ
 from django.template import loader
 from django.conf import settings
-from django.core.cache import cache
+from django.core.cache import cache, caches
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
-from .login_proxy import login_custom
+from .login_proxy import login_blog, logout_blog
+from django.contrib.sessions.models import Session
 
 
 def check_request_type(request):
@@ -74,6 +75,24 @@ def user_directory_path(instance, filename):
 
 
 def login_tool(request, user):
-    value = user.user_id + get_random_str() + user.username
-    res = login_custom(request, user, value)
-    print(res)
+    print('---------login_tool------------------')
+    value = str(user.user_id) + get_random_str() + user.username
+    print('value :  ', value)
+    res = login_blog(request, user, value)
+    print('-------res------')
+    print('res :  ', res)
+
+
+def logout_tool(request):
+    print('--------logout_tool-------------')
+    logout_blog(request)
+
+
+def is_session_exists(session_key):
+    print('------------is_session_exists--------------')
+    check = Session.objects.filter(session_key__exact=session_key)
+    print(check)
+    print('session_key: ', session_key)
+    print(caches[settings.SESSION_CACHE_ALIAS])
+    print(session_key in caches[settings.SESSION_CACHE_ALIAS])
+    return session_key and (session_key in caches[settings.SESSION_CACHE_ALIAS] or check)
