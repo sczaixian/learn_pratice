@@ -1,14 +1,14 @@
 from django.contrib import admin
-from .models.photo import Photo
-from .models.blog import Blog
-from .models.article import Article
-from .models.article_sort import ArticleSort
-from .models.photo_sort import PhotoSort
-from .models.secret_message import SecretMessage
-from .models.system_message import SystemMessage
-from .models.user_info import UserInfo
-from .models.user_attention import UserAttention
-from .models.user_stay_message import UserStayMessage
+from learn_pratice.apps.blog.models.mysql.photo import Photo
+from learn_pratice.apps.blog.models.mysql.blog import Blog
+from learn_pratice.apps.blog.models.mysql.article import Article
+from learn_pratice.apps.blog.models.mysql.article_sort import ArticleSort
+from learn_pratice.apps.blog.models.mysql.photo_sort import PhotoSort
+from learn_pratice.apps.blog.models.mysql.secret_message import SecretMessage
+from learn_pratice.apps.blog.models.mysql.system_message import SystemMessage
+from learn_pratice.apps.blog.models.mysql.user_info import UserInfo
+from learn_pratice.apps.blog.models.mysql.user_attention import UserAttention
+from learn_pratice.apps.blog.models.mysql.user_stay_message import UserStayMessage
 #
 admin.site.register(Photo)
 admin.site.register(Blog)

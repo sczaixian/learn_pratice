@@ -44,6 +44,9 @@
                                         {% csrf_token %}
                                         <fieldset>
                                             <label class="block clearfix">
+                                                <span class="login_error"></span>
+                                            </label>
+                                            <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<input type="text" name="username" id="username" class="form-control"
                                                                    placeholder="Username"/>
@@ -63,7 +66,7 @@
 
                                             <div class="clearfix">
                                                 <label class="inline">
-                                                    <input type="checkbox" name="remember" class="ace"/>
+                                                    <input type="checkbox" id="remember" name="remember" class="ace"/>
                                                     <span class="lbl"> 记住</span>
                                                 </label>
 

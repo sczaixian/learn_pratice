@@ -26,3 +26,4 @@ request.session.set_expiry(0);那么当浏览器关闭时，session失效，试�
 <input type="checkbox" name="remember" class="ace" checked/>        --->checked字样，代表刷后新选
 value如果没有设置，则默认value的值是“on”。如果设置，自然value就是设置的值
 value的值和表单是否选中无关。 无论表单是否选中，checkbox的值都是一样的
+jquery  选择器   --->https://www.w3school.com.cn/jquery/jquery_ref_selectors.asp

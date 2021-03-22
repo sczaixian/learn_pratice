@@ -8,6 +8,7 @@ from django.core.cache import cache, caches
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from .login_proxy import login_blog, logout_blog
 from django.contrib.sessions.models import Session
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage, InvalidPage
 
 
 def check_request_type(request):
@@ -95,4 +96,24 @@ def is_session_exists(session_key):
     print('session_key: ', session_key)
     print(caches[settings.SESSION_CACHE_ALIAS])
     print(session_key in caches[settings.SESSION_CACHE_ALIAS])
+    print(session_key in caches[settings.SESSION_CACHE_ALIAS] or check)
     return session_key and (session_key in caches[settings.SESSION_CACHE_ALIAS] or check)
+
+
+def paginator_tool(request, data_list):
+    print('------------paginator_tool-----------------')
+    content = check_request_type(request)
+    page = content.get['page']
+    page_size = content.get['page_size']
+    paginator = Paginator(data_list, page_size)
+    try:
+        articles = paginator.page(page)
+    except PageNotAnInteger:
+        articles = paginator.page(1)
+    except InvalidPage:
+        # 如果请求的页数不存在, 重定向页面
+        return False
+    except EmptyPage:
+        # 如果请求的页数不在合法的页数范围内，返回结果的最后一页。
+        articles = paginator.page(paginator.num_pages)
+    return articles

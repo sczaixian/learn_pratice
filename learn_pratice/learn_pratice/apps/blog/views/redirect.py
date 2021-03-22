@@ -7,7 +7,7 @@ def init_blog(request):
     return render(request, 'index.html')
 
 
-def init_content(request):
+def init_content_page(request):
     print('------------init_content--------------')
     return render(request, 'content.html')
 
@@ -18,6 +18,6 @@ def add_article_page(request):
     return render(request, 'add_blog.html')
 
 
-def goto_register_page(request):
-    print('--------------goto_register_page-----------------')
+def register_page(request):
+    print('--------------register_page-----------------')
     return render(request, 'login_register.html')

@@ -1,5 +1,10 @@
-from django.shortcuts import render, redirect
-from learn_pratice.apps.blog.models.article import Article
+
+import json
+from django.shortcuts import redirect
+from django.core import serializers
+from django.http import JsonResponse
+from learn_pratice.apps.blog.models.mysql.article import Article
+from learn_pratice.apps.blog.utils.tools import paginator_tool
 
 
 def add_article(request):
@@ -20,3 +25,15 @@ def add_article(request):
             article_content=article_content,
         )
     return redirect('blog:content')
+
+
+def paginator_view(request):
+    print('------------paginator_view-----------------')
+    article_list = Article.objects.all()
+    articles = paginator_tool(request, article_list)
+    res = dict()
+    if articles:
+        res['articles'] = json.loads(serializers.serialize("json", articles))
+    else:
+        res['msg'] = 'vip666888'
+    return JsonResponse(res)
