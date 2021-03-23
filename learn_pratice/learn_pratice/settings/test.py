@@ -105,7 +105,7 @@
 # # os.path.join(STATIC_ROOT,'css')，os.path.join(STATIC_ROOT,'js')，os.path.join(STATIC_ROOT,'images')；
 # # 我们分别给他们起三个别名css，js，images（你可以随意给，不过为了易记，我们原名称指定别名了）
 # TEMPLATE_DIRS = (
-#     os.path.join(PROJECT_ROOT, 'templates').replace('\\', '/'),
+#     os.path.join(PROJECT_ROOT, 'blog_template').replace('\\', '/'),
 # )
 # # 配置应用的模板文件路径
 # TEMPLATE_DIRS += MY_TEMPLATE_DIRS

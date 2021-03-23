@@ -52,10 +52,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'learn_pratice.urls'
 
+# MY_TEMPLATE_DIR = BASE_DIR / 'learn_pratice.apps.blog.blog_template'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'templates', BASE_DIR / 'templatetags'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -63,7 +65,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # os.path.join(BASE_DIR, 'templates2').replace('\\', '/'),
+                # os.path.join(BASE_DIR, 'apps/blog/blog_template').replace('\\', '/'),
             ],
         },
     },

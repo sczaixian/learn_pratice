@@ -1,0 +1,36 @@
+
+渲染器
+django.core.context_processors
+
+TEMPLATES
+    --BACKEND
+        --  使用的模板引擎。内建的模板引擎有
+                'django.template.backends.django.DjangoTemplates'
+                'django.template.backends.jinja2.Jinja2'
+    --NAME
+        --  该模板引擎的别名。它是一个标识符，让你在渲染时可以选择一个引擎。
+            别名在所有配置好的模板引擎中必须是唯一的。
+            当未提供值时，默认是定义引擎类的模板名，也即是与BACKEND相邻的最后一部分。
+            例如如果引擎是'mypackage.whatever.Backend'，那么它的默认名为'whatever'
+    --DIRS
+        --  引擎用于查找模板源文件的目录，按搜索顺序排列。
+    --APP_DIRS
+        --  引擎是否在已安装应用程序（的目录）内查找模板源文件
+    --OPTIONS
+        --  传递给该模板引擎（backend）的其他参数。不同的引擎，可用的参数不一样
+    --TEMPLATE_CONTEXT_PROCESSORS
+        --  默认：
+                ("django.contrib.auth.context_processors.auth",
+                "django.template.context_processors.debug",
+                "django.template.context_processors.i18n",
+                "django.template.context_processors.media",
+                "django.template.context_processors.static",
+                "django.template.context_processors.tz",
+                "django.contrib.messages.context_processors.messages")
+        --  在Django 1.8中，内建模板的上下文处理器从
+            django.core.context_processors移至
+            django.template.context_processors
+    --TEMPLATE_DEBUG
+    --TEMPLATE_DIRS
+    --TEMPLATE_LOCADERS
+    --TEMPLATE_STRING_IF_INVALID

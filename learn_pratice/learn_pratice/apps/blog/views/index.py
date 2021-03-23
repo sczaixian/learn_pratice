@@ -31,9 +31,17 @@ def index(request):
     print('---------index------------')
     # TODO: static_html
     res = dict()
-    res['articles'] = Article.objects.all()
+    article_list = Article.objects.all()
+    articles = paginator_tool(request, article_list)
+    res = dict()
+    if articles:
+        res['articles'] = articles
+    else:
+        res['msg'] = '000'
     print('---------articles--------------')
     print(res['articles'])
+    print(res['articles'].number)
+    print(res['articles'].paginator.num_pages)
     username = request.COOKIES['user']
     check = UserInfo.objects.filter(username__exact=username)
     if check:
@@ -55,4 +63,3 @@ def paginator_view(request):
     else:
         res['msg'] = 'vip666888'
     return JsonResponse(res)
-

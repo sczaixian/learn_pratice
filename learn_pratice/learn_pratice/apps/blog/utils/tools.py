@@ -11,6 +11,9 @@ from django.contrib.sessions.models import Session
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage, InvalidPage
 
 
+PAGE_SIZE = 2
+PAGE = 1
+
 def check_request_type(request):
     if request.method == 'POST':
         return request.POST
@@ -103,8 +106,13 @@ def is_session_exists(session_key):
 def paginator_tool(request, data_list):
     print('------------paginator_tool-----------------')
     content = check_request_type(request)
-    page = content.get['page']
-    page_size = content.get['page_size']
+    print(content)
+    page = PAGE
+    if 'page' in content:
+        page = content.get['page']
+    page_size = PAGE_SIZE
+    if 'page_size' in content:
+        page = content.get['page_size']
     paginator = Paginator(data_list, page_size)
     try:
         articles = paginator.page(page)
