@@ -16,6 +16,7 @@ which python3
 
 $ ln -s /usr/bin/python3 /usr/bin/python
 
+
 export PATH=/usr/local/mongodb4/bin:$PATH
 
 mongod --dbpath /var/lib/mongo --logpath /var/log/mongodb/mongod.log --fork

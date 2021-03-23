@@ -46,11 +46,11 @@ def login(request):
         response = JsonResponse({'user': username})
         # 手功完成 set_cookie
         # response.set_cookie('csrftoken', 'csrf-token-value')
-        login_tool(request, user)
+        # login_tool(request, user)
         print('----------------remember----------------')
         print(remember)
-        if remember is 'false':
-            request.session.set_expiry(0)
+        # if remember is 'false':
+            # request.session.set_expiry(0)
         response.set_cookie('user', username, expires=datetime.now() + timedelta(days=1))
         print('-----2---response-------------')
         print(response.content)

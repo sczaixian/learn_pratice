@@ -1,3 +1,4 @@
+
 from django.contrib import admin
 from learn_pratice.apps.blog.models.mysql.photo import Photo
 from learn_pratice.apps.blog.models.mysql.blog import Blog
@@ -10,6 +11,7 @@ from learn_pratice.apps.blog.models.mysql.user_info import UserInfo
 from learn_pratice.apps.blog.models.mysql.user_attention import UserAttention
 from learn_pratice.apps.blog.models.mysql.user_stay_message import UserStayMessage
 #
+
 admin.site.register(Photo)
 admin.site.register(Blog)
 admin.site.register(Article)

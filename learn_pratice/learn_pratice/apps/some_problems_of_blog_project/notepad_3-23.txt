@@ -1,0 +1,71 @@
+6.安装其他的依赖包
+python-mongodb
+pip install django
+pip install pymongo==2.8
+pip install mongoengine==0.9.0
+pip install django-mongonaut
+
+pip install virtualenv
+
+为项目设置虚拟环境
+virtualenv myproject
+
+为项目设置虚拟环境
+source myproject/bin/activate
+
+退出所有虚拟
+deactivate
+(venv) [python@192 /]$ deactivate
+[python@192 /]$
+
+
+pip install djangotoolbox
+
+新的版本
+pip install git+https://github.com/django-nonrel/mongodb-engine
+
+
+djongo
+    https://www.djongomapper.com/get-started/
+    pip install djongo
+
+'mgo_db': {
+        'ENGINE': 'djongo',
+        'ENFORCE_SCHEMA': True,
+        # 'LOGGING': {
+        #     'version': 1,
+        #     'loggers': {
+        #         'djongo': {
+        #             'level': 'DEBUG',
+        #             'propogate': False,
+        #         }
+        #     },
+        #  },
+        'NAME': 'myblog',
+        'CLIENT': {
+            'host': '127.0.0.1',
+            # 'port': 21017,
+            # 'username': 'db-username',
+            # 'password': 'password',
+            # 'authSource': 'db-name',
+            # 'authMechanism': 'SCRAM-SHA-1'
+        }
+    },
+
+本地安装 MongoDB 数据
+    'mgo_db': {
+        'ENGINE': 'djongo',
+        'ENFORCE_SCHEMA': True,
+        'NAME': 'myblog',
+        'CLIENT': {
+            'host': '127.0.0.1',
+        }
+
+查看数据库创建时间
+show table status
+
+
+通过拆分  将MySQL blog   和 MongoDB blog 分离开
+分别使用 不同的settings
+不同的wsgi
+

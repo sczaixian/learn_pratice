@@ -49,5 +49,6 @@ class AppsRouter(object):
             return False
         return None
 
-# class OtherRouter(object):
-#     pass
+
+class MongoRouter(object):
+    pass

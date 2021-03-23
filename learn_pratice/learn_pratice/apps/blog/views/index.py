@@ -26,7 +26,7 @@ def login_check(fun):
 
 @cache_page(2)  # 15 minutes
 @require_http_methods('GET')
-@login_check
+# @login_check
 def index(request):
     print('---------index------------')
     # TODO: static_html

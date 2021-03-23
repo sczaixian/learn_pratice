@@ -1,5 +1,21 @@
 from .common import *  # NOQA
 
+INSTALLED_APPS.append('learn_pratice.apps.blog')
+
+ROOT_URLCONF = 'learn_pratice.urls'
+
+WSGI_APPLICATION = 'learn_pratice.wsgi.wsgi_blog.application'
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace("\\", "/")
+
+
 DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
@@ -13,23 +29,24 @@ DATABASES = {
         'HOST': '127.0.0.1',
         'PORT': '3306',
     },
-    'blog2': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'myblog2',
-        'USER': 'python',
-        'PASSWORD': 'sczaixian',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-    }
+    'mgo_db': {
+        'ENGINE': 'djongo',
+        'ENFORCE_SCHEMA': True,
+        'NAME': 'myblog',
+        'CLIENT': {
+            'host': '127.0.0.1',
+        }
+    },
 }
 
-DATABASE_ROUTERS = [
-    'learn_pratice.settings.db_routers.AppsRouter',
-]
-
-DATABASE_APPS_MAPPING = {
-    'blog2': 'blog2',
-}
+# DATABASE_ROUTERS = [
+#     'learn_pratice.settings.db_routers.AppsRouter',
+# ]
+#
+# DATABASE_APPS_MAPPING = {
+#     'blog': 'blog',
+#     'mongo_blog': 'mgo_db',
+# }
 
 AUTH_USER_MODEL = 'blog.UserInfo'
 
@@ -55,7 +72,6 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 # SESSION_FILE_PATH = '/blog_session/uid/'
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-
 
 CACHES = {
     'default': {
