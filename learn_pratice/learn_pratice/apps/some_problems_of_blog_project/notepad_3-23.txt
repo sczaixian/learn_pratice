@@ -69,3 +69,67 @@ show table status
 分别使用 不同的settings
 不同的wsgi
 
+
+在使用git仓库时，有些特殊文件我们希望能够进行屏蔽，
+而有些文件我们希望能够保留在版本库中，
+此时就用到了git的.gitignore 文件
+
+.gitignore 文件格式规范如下
+
+    所有空行或#开头的行都会被忽略；
+    可以使用标准的 glob 模式匹配；
+    文件或目录前加 / 表示仓库根目录的对应文件；
+    匹配模式最后跟反斜杠 / 说明要忽略的是目录；
+    要特殊不忽略某个文件或目录，可以在模式前加上取反 !
+
+下面是一个 .gitignore 文件例子，注释上附录有说明
+        最后两条的顺序很重要，必须要先屏蔽所有的，然后才建立特殊不屏蔽的规则
+
+*.a                    # 所有以 '.a' 为后缀的文件都屏蔽掉
+# Office 缓存文件
+~'$'*.docx
+~'$'*.ppt
+~'$'*.pptx
+~'$'*.xls
+
+tags                   # 仓库中所有名为 tags 的文件都屏蔽
+core.*                 # 仓库中所有以 'core.' 开头的文件都屏蔽
+
+tools/                # 屏蔽目录 tools
+log/*                  # 屏蔽目录 log 下的所有文件，但不屏蔽 log 目录本身
+
+/log.log               # 只屏蔽仓库根目录下的 log.log 文件，其他目录中的不屏蔽
+readme.md       # 屏蔽仓库中所有名为 readme.md 的文件
+!/readme.md     # 在上一条屏蔽规则的条件下，不屏蔽仓库根目录下的 readme.md 文件
+
+
+git rm
+
+删除暂存区或者git分支上的文件，同时工作区也将删除
+此命令用来删除文件，命令组合为
+git rm file
+git commit file
+git push origin master
+
+
+git rm (-r) --cached
+
+删除暂存区或者分支上的文件，但是工作区中文件还将保留
+一般用来取消文件的版本控制，但是依然可以在工作区编辑文件
+一般命令组合为
+git rm (-r) --cached file //此时file为脱落版本控制状态(IDEA中文件颜色为红色)
+//若文件已经在版本分支里则delete file已经加入到了暂存区所以还需要下面的命令，
+//下面commit命令我试图使用IDEA中的Git-commit操作但是分支中或远程仓库中的此文件依然存在，初步猜想是IDEA上面的commit的操作为git add + git commit原子性的两个操作，由于先执行了git add所以此文件又重新回到了版本控制中，暂存区为空所以不能提交
+git commit -m 'delete cached file'
+git push origin master
+
+
+
+忽略已经提交的文件可以使用如下命令
+$ git rm --cached xxx文件
+
+恢复
+①在文件.gitignore中把对应的xxx文件去掉。
+
+②执行git add -A，接着就是提交，推送
+
