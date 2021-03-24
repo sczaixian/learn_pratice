@@ -1,6 +1,6 @@
 # _*_ coding: utf-8 _*_
 from django.db import models
-from learn_pratice.apps.blog.utils.tools import user_directory_path
+from learn_pratice.apps.mongo_blog.utils.tools import user_directory_path
 
 
 class UserInfo(models.Model):
@@ -15,7 +15,7 @@ class UserInfo(models.Model):
 
     class Meta:
         app_label = 'mongo_blog'
-        db_table = 'blog_user'
+        managed = True
 
 
 

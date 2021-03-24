@@ -1,0 +1,1 @@
+default_app_config = 'learn_pratice.apps.mongo_blog.apps.BlogConfig'

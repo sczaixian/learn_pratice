@@ -5,14 +5,36 @@ import hashlib
 from django.template import loader
 from django.conf import settings
 from django.core.cache import cache, caches
-from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
+from django.core.mail import EmailMultiAlternatives
 from .login_proxy import login_blog, logout_blog
 from django.contrib.sessions.models import Session
+from django.utils.module_loading import import_string
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage, InvalidPage
 
 
 PAGE_SIZE = 2
 PAGE = 1
+
+
+def get_connection(backend=None, fail_silently=False, **kwds):
+    klass = import_string(backend or settings.EMAIL_BACKEND)
+    return klass(fail_silently=fail_silently, **kwds)
+
+
+def send_mail(subject, message, from_email, recipient_list,
+              fail_silently=False, auth_user=None, auth_password=None,
+              connection=None, html_message=None):
+    connection = connection or get_connection(
+        username=auth_user,
+        password=auth_password,
+        fail_silently=fail_silently,
+    )
+    mail = EmailMultiAlternatives(subject, message, from_email, recipient_list, connection=connection)
+    if html_message:
+        mail.attach_alternative(html_message, 'text/html')
+
+    return mail.send()
+
 
 def check_request_type(request):
     if request.method == 'POST':

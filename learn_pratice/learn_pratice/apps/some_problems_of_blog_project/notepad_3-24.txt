@@ -1,0 +1,94 @@
+django  中间件
+
+中间件是 Django 请求/响应处理的钩子框架。
+它是一个轻量级的、低级的“插件”系统，用于全局改变 Django 的输入或输出
+
+    继承自 django.utils.deprecation.MiddlewareMixin类
+
+    def process_request(self, request):
+        执行路由之前被调用，在每个请求上调用，返回None或HttpResponse对象
+
+    def process_view(self, request, callback, callback_args, callback_kwargs):
+        调用视图之前被调用，在每个请求上调用，返回None或HttpResponse对象
+
+    def process_response(self, request, response):
+        所有响应返回浏览器之前被调用，在每个请求上调用，返回HttpResponse对象
+
+    def process_exception(self, request, exception):
+        当处理过程中抛出异常时调用，返回一个HttpResponse对象
+
+    def process_template_response(self, request, response):
+        在视图刚好执行完毕之后被调用，在每个请求上调用，返回实现了render方法的响应对象
+
+    返回None时表示忽略当前操作进入下一项事件      返回HttpResponese对象时表示此请求结束，直接返回给客户端
+
+干扰的 Python 包开发环境
+开发会用 virtualenv 来管理多个开发环境，virtualenvwrapper 使得virtualenv变得更好用
+(sudo) pip install virtualenv virtualenvwrapper
+修改~/.bash_profile或其它环境变量相关文件，添加以下语句
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/workspace
+source /usr/local/bin/virtualenvwrapper.sh
+
+
+多数据库连接的一些问题
+
+多数据库需要配置的步骤
+
+	settings --
+
+第一步  加入一个需要的数据库配置这里用的MongoDB
+DATABASES = {
+    'default': {
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'my_mgodb',
+        # 'USER': 'python',
+        # 'PASSWORD': 'sczaixian',
+        # 'HOST': '127.0.0.1',
+        # 'PORT': '3306',
+    },
+    'mgo_db': {
+        'ENGINE': 'djongo',
+        'ENFORCE_SCHEMA': True,
+        'NAME': 'my_mgodb',
+        'CLIENT': {
+            'host': '127.0.0.1',
+        }
+    },
+}
+
+建一个数据库操作路由
+DATABASE_ROUTERS = [
+    'learn_pratice.settings.db_routers.AppsRouter',
+]
+
+配置映射关系
+DATABASE_APPS_MAPPING = {
+    'mongo_blog': 'mgo_db',
+}
+
+完成这些就可以了
+
+遇到的问题
+makemigrations  时总是说数据库不存在，其实我已经建好了数据库
+
+django.core.management.commands.migrate.py
+@no_translations
+    def handle(self, *args, **options):
+
+db = options['database']
+        connection = connections[db]
+在这里
+	往下找  ConnectionHandler: 最终在这里发现
+	if DEFAULT_DB_ALIAS not in self._databases:
+        raise ImproperlyConfigured("You must define a '%s' database." % DEFAULT_DB_ALIAS)
+    if self._databases[DEFAULT_DB_ALIAS] == {}:
+        self._databases[DEFAULT_DB_ALIAS]['ENGINE'] = 'django.db.backends.dummy'
+    return self._databases
+
+多数据库时，  必须要有个default  ， 当你想用别的数据库时  需要把 default 设成空
+
+这个问题解决了
+数据迁移的时候
+Python manage.py migrate app_label --database xx（database里面配置的）
+

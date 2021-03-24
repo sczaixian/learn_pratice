@@ -9,6 +9,6 @@ from django.urls import path, include, re_path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include(('learn_pratice.apps.blog.urls', 'blog'))),
-    path('blog_mongodb', include(('learn_pratice.apps.mongo_blog.urls', 'blog_mongodb'))),
+    path('blog_mgodb/', include(('learn_pratice.apps.mongo_blog.urls', 'blog_mgodb'))),
     re_path(r'^medis/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 ]

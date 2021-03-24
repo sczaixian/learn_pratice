@@ -14,6 +14,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage, Invali
 PAGE_SIZE = 2
 PAGE = 1
 
+
 def check_request_type(request):
     if request.method == 'POST':
         return request.POST

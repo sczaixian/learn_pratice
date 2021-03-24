@@ -10,6 +10,7 @@ from learn_pratice.apps.mongo_blog.models.mongodb.photo_sort import PhotoSort
 from learn_pratice.apps.mongo_blog.models.mongodb.secret_message import SecretMessage
 from learn_pratice.apps.mongo_blog.models.mongodb.system_message import SystemMessage
 from learn_pratice.apps.mongo_blog.models.mongodb.user_info import UserInfo
+from learn_pratice.apps.mongo_blog.models.mongodb.user import User
 from learn_pratice.apps.mongo_blog.models.mongodb.user_attention import UserAttention
 from learn_pratice.apps.mongo_blog.models.mongodb.user_stay_message import UserStayMessage
 
@@ -22,5 +23,6 @@ admin.site.register(PhotoSort)
 admin.site.register(SecretMessage)
 admin.site.register(SystemMessage)
 admin.site.register(UserInfo)
+admin.site.register(User)
 admin.site.register(UserAttention)
 admin.site.register(UserStayMessage)

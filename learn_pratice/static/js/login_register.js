@@ -1,6 +1,6 @@
 $("#btn_login").click(function () {
     $.ajax({
-        url: '/blog/login/',
+        url: '/blog_mgodb/login/',
         type: "post",
         data: {
             'username': $("#username").val(),
@@ -11,7 +11,7 @@ $("#btn_login").click(function () {
         success: function (data) {
             console.log(data);
             if (data.user) {
-                window.location.href = '/blog/'
+                window.location.href = '/blog_mgodb/'
             } else {
                 if (data.msg) {
                     $('.login_error').text(data.msg).css({'color': 'red', "margin-left": '10px'})

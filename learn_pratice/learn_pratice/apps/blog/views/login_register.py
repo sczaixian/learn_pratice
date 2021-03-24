@@ -13,11 +13,8 @@ from learn_pratice.apps.blog.models.mysql.user_info import UserInfo
 # from django.contrib.auth.decorators import login_required
 # from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.http import require_http_methods
-from learn_pratice.apps.blog.utils.tools import check_request_type, \
-                                                is_active, \
-                                                email_verify, \
-                                                login_tool, \
-                                                logout_tool
+from learn_pratice.apps.blog.utils.tools import (
+    check_request_type, is_active, email_verify, login_tool, logout_tool)
 
 
 # _RE_EMAIL = re.compile(r'^[a-z0-9\.\-\_]+\@[a-z0-9\-\_]+(\.[a-z0-9\-\_]+){1,4}$')
@@ -46,11 +43,11 @@ def login(request):
         response = JsonResponse({'user': username})
         # 手功完成 set_cookie
         # response.set_cookie('csrftoken', 'csrf-token-value')
-        # login_tool(request, user)
+        login_tool(request, user)
         print('----------------remember----------------')
         print(remember)
-        # if remember is 'false':
-            # request.session.set_expiry(0)
+        if remember is 'false':
+            request.session.set_expiry(0)
         response.set_cookie('user', username, expires=datetime.now() + timedelta(days=1))
         print('-----2---response-------------')
         print(response.content)

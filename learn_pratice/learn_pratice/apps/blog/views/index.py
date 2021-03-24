@@ -8,8 +8,7 @@ from django.views.decorators.cache import cache_page
 from django.views.decorators.http import require_http_methods
 from learn_pratice.apps.blog.models.mysql.article import Article
 from learn_pratice.apps.blog.models.mysql.user_info import UserInfo
-from learn_pratice.apps.blog.utils.tools import is_session_exists,  \
-                                                paginator_tool
+from learn_pratice.apps.blog.utils.tools import (is_session_exists, paginator_tool)
 
 
 def login_check(fun):
@@ -26,7 +25,7 @@ def login_check(fun):
 
 @cache_page(2)  # 15 minutes
 @require_http_methods('GET')
-# @login_check
+@login_check
 def index(request):
     print('---------index------------')
     # TODO: static_html

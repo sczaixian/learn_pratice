@@ -4,24 +4,19 @@ from django.http import JsonResponse
 from _datetime import datetime, timedelta
 from django.shortcuts import render, redirect
 from django.utils.datastructures import MultiValueDictKeyError
-from learn_pratice.apps.mongo_blog.models.mongodb.user_info import UserInfo
+from learn_pratice.apps.mongo_blog.models.mongodb.user import User
 from django.views.decorators.http import require_http_methods
-from learn_pratice.apps.mongo_blog.utils.tools import check_request_type, \
-                                                is_active, \
-                                                email_verify, \
-                                                login_tool, \
-                                                logout_tool
+from learn_pratice.apps.mongo_blog.utils.tools import (
+    check_request_type, is_active, email_verify, login_tool, logout_tool)
 
 
 # _RE_EMAIL = re.compile(r'^[a-z0-9\.\-\_]+\@[a-z0-9\-\_]+(\.[a-z0-9\-\_]+){1,4}$')
 # _RE_SHA1 = re.compile(r'^[0-9a-f]{40}$')
 
 
-# @method_decorator(login_required)
-# @method_decorator(csrf_protect)
 @require_http_methods(['POST'])
 def login(request):
-    print('------------login---------------------')
+    print('-----mongo_blog-------login---------------------')
     content = check_request_type(request)
     username = content.get('username')
     password = content.get('password')
@@ -31,14 +26,12 @@ def login(request):
         remember = False
     print('----------------content-----------------')
     print(content)
-    check = UserInfo.objects.filter(username__exact=username, password__exact=password)
+    check = User.objects.filter(username__exact=username, password__exact=password)
     if check:
         print('--------------------check------------')
         print(check[0])
-        user = UserInfo.objects.get(username=username)
+        user = User.objects.get(username=username)
         response = JsonResponse({'user': username})
-        # 手功完成 set_cookie
-        # response.set_cookie('csrftoken', 'csrf-token-value')
         # login_tool(request, user)
         print('----------------remember----------------')
         print(remember)
@@ -53,16 +46,13 @@ def login(request):
 
 
 def register(request):
-    # 这个方法会从settings中找AUTH_USER_MODEL ,然后取得的User
-    # 至于为何不直接那models里的User  暂时不清楚,后续会去测试,知道后再修改本文
-    # user = get_user_model()
-    print('---------------register--------------')
+    print('----------mongo_blog-----register--------------')
     print(request.POST)
     content = check_request_type(request)
     username = content.get('username')
     password = content.get('password')
     email = content.get('email')
-    UserInfo.objects.create(username=username, password=password, email=email)
+    User.objects.create(username=username, password=password, email=email)
     return render(request, 'login_register.html')
 
 
@@ -75,7 +65,7 @@ def active_email(request, **kwargs):
 
 
 def logout(request):
-    print('-------logout-----------------')
+    print('-------logout------mongo_blog-----------')
     print(request)
     if request.method == 'POST':
         print('post :  ', request.POST)
@@ -85,9 +75,3 @@ def logout(request):
     response = redirect(reverse('blog:register_page'))
     response.delete_cookie('username')
     return response
-
-
-# django/util/cache
-# @cache_control(max_age=360, must_revalidate=True, private=True)
-# def private_cache(request):
-#     pass

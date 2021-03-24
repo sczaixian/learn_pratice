@@ -1,6 +1,6 @@
 import os
 from django.db import models
-from learn_pratice.apps.blog.utils.tools import user_directory_path
+from learn_pratice.apps.mongo_blog.utils.tools import user_directory_path
 
 
 class Photo(models.Model):

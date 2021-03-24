@@ -1,9 +1,7 @@
 
 from django.urls import path, re_path
-from learn_pratice.apps.blog.views import login_register as login_view, \
-                                          content, \
-                                          redirect, \
-                                          index
+from learn_pratice.apps.blog.views import (
+    login_register as login_view, content, redirect, index)
 
 # from django.conf.urls import url
 

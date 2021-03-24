@@ -1,3 +1,4 @@
+import os
 from .common import *  # NOQA
 
 INSTALLED_APPS.append('learn_pratice.apps.blog')
