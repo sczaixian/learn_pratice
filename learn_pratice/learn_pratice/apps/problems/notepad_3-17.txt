@@ -17,11 +17,32 @@ which python3
 $ ln -s /usr/bin/python3 /usr/bin/python
 
 
+install ---mongodb
+官网下载压缩包
+tar -zxvf mongodb-linux-x86_64-ubuntu1604-4.2.8.tgz
+解压重命名 放到/usr/local/ongoDB4
+mv mongodb-src-r4.2.8  /usr/local/mongodb4
 export PATH=/usr/local/mongodb4/bin:$PATH
-
+sudo mkdir -p /var/lib/mongo
+sudo mkdir -p /var/log/mongodb
+sudo chown `whoami` /var/lib/mongo     # 设置权限
+sudo chown `whoami` /var/log/mongodb   # 设置权限
 mongod --dbpath /var/lib/mongo --logpath /var/log/mongodb/mongod.log --fork
+./mongo: error while loading shared libraries: libcrypto.so.10: cannot open shared object file: No such file or directory
+dnf install compat-openssl10
 
 
+安装openssl
+wget http://www.openssl.org/source/openssl-1.1.1k.tar.gz
+tar xzf openssl-1.1.1k.tar.gz
+cd ....
+makdir /usr/local/openssl
+./config --prefix=/usr/local/openssl
+make
+make install
+如果已经在可省略
+which openssl
+ln -s /usr/local/openssl/bin/openssl /usr/bin/openssl
 
 vmware 主机访问虚拟机服务器
 Centos7.0 默认使用firewall作为防火墙，这里改为iptables

@@ -1,7 +1,20 @@
 import os
 from .common import *  # NOQA
 
-INSTALLED_APPS.append('learn_pratice.apps.mongo_blog')
+DEV_MONGO_APPS = [
+    'learn_pratice.apps.mongo_blog',
+    'rest_framework',
+]
+INSTALLED_APPS.extend(DEV_MONGO_APPS)
+
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 ROOT_URLCONF = 'learn_pratice.urls'
 

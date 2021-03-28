@@ -1,0 +1,184 @@
+
+删除容易安装难啊！
+
+1、删除现有Python
+
+rpm -qa|grep python|xargs rpm -ev --allmatches --nodeps ##强制删除已安装程序及其关联
+
+whereis python |xargs rm -frv  ##删除所有残余文件 ##xargs，允许你对输出执行其他某些命令
+
+whereis python ##验证删除，返回无结果
+
+
+# 2、删除现有的yum
+
+# rpm -qa|grep yum|xargs rpm -ev --allmatches --nodeps
+
+# whereis yum |xargs rm -frv
+
+# 最后都可以运行一遍whereis python && whereis yum来确认一下，如果都是空的那么就完全卸载了
+
+yum源的替换大致分为三步：备份，替换，更新
+
+一、备份
+cd /etc/yum.repos.d
+mv CentOS-Base.repo CentOS-Base.repo.old
+二、替换
+
+先下载想要的源，并重命名。
+sohu的源：http://mirrors.sohu.com/help/CentOS-Base-sohu.repo
+163的源：http://mirrors.163.com/.help/CentOS6-Base-163.repo
+阿里云的源：http://mirrors.aliyun.com/repo/Centos-7.repo
+下载之后将新的源改名为 CentOS-Base.repo
+
+wget http://mirrors.aliyun.com/repo/Centos-7.repo
+mv Centos-7.repo CentOS-Base.repo
+
+三、更新
+yum update
+
+
+首先安装Python的相关依赖
+yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make
+
+已升级:
+  freetype-2.9.1-4.el8_3.1.x86_64             libselinux-2.9-4.el8_3.x86_64
+  libselinux-utils-2.9-4.el8_3.x86_64         openssl-1:1.1.1g-12.el8_3.x86_64
+  openssl-libs-1:1.1.1g-12.el8_3.x86_64       python3-libselinux-2.9-4.el8_3.x86_64
+
+已安装:
+  bzip2-devel-1.0.6-26.el8.x86_64            cpp-8.3.1-5.1.el8.x86_64
+  expat-devel-2.2.5-4.el8.x86_64             fontconfig-devel-2.13.1-3.el8.x86_64
+  freetype-devel-2.9.1-4.el8_3.1.x86_64      gcc-8.3.1-5.1.el8.x86_64
+  glibc-devel-2.28-127.el8.x86_64            glibc-headers-2.28-127.el8.x86_64
+  isl-0.16.1-6.el8.x86_64                    kernel-headers-4.18.0-240.15.1.el8_3.x86_64
+  keyutils-libs-devel-1.5.10-6.el8.x86_64    krb5-devel-1.18.2-5.el8.x86_64
+  libX11-devel-1.6.8-3.el8.x86_64            libXau-devel-1.0.9-3.el8.x86_64
+  libXft-devel-2.3.3-1.el8.x86_64            libXrender-devel-0.9.10-7.el8.x86_64
+  libcom_err-devel-1.45.6-1.el8.x86_64       libkadm5-1.18.2-5.el8.x86_64
+  libpng-devel-2:1.6.34-5.el8.x86_64         libselinux-devel-2.9-4.el8_3.x86_64
+  libsepol-devel-2.9-1.el8.x86_64            libuuid-devel-2.32.1-24.el8.x86_64
+  libverto-devel-0.3.0-5.el8.x86_64          libxcb-devel-1.13.1-1.el8.x86_64
+  libxcrypt-devel-4.1.1-4.el8.x86_64         make-1:4.2.1-10.el8.x86_64
+  ncurses-c++-libs-6.1-7.20180224.el8.x86_64 ncurses-devel-6.1-7.20180224.el8.x86_64
+  openssl-devel-1:1.1.1g-12.el8_3.x86_64     pcre2-devel-10.32-2.el8.x86_64
+  pcre2-utf16-10.32-2.el8.x86_64             pcre2-utf32-10.32-2.el8.x86_64
+  readline-devel-7.0-10.el8.x86_64           sqlite-devel-3.26.0-11.el8.x86_64
+  tcl-1:8.6.8-2.el8.x86_64                   tcl-devel-1:8.6.8-2.el8.x86_64
+  tk-1:8.6.8-1.el8.x86_64                    tk-devel-1:8.6.8-1.el8.x86_64
+  xorg-x11-proto-devel-2020.1-3.el8.noarch   zlib-devel-1.2.11-16.el8_2.x86_64
+
+完毕！
+
+在vmware虚拟机中设置共享文件夹
+关闭虚拟机--设置--选项--总是启用--设置一个文件目录
+打开虚拟机--虚拟机--管理工具下面的虚拟机tool安装，拷贝到home文件夹下
+以root在命令行进入 解压 tar zxf VMwareTools-10.1.6-5214329.tar.gz
+进入文件夹  sudo ./vmware-tools-distrib/vmware-install.pl
+一直 yes---结束  共享文件夹挂在了/mnt/hgfs/..
+
+wget https://www.python.org/ftp/python/3.9.2/Python-3.9.2.tgz
+如果下载不动可以在主机上下载下来，放到share文件夹下面，
+
+在虚拟机上解压  tar -zxvf Python-3.9.2rc1.tgz
+进入文件夹 ./configure  --  make   ---make install (权限不够用root)
+
+
+python bash: python: 未找到命令..
+whereis python
+建立一个软连接
+ln -s /usr/bin/python3.6 /usr/bin/python
+
+
+yum install git
+
+切换到项目目录
+
+https://github.com/sczaixian/learn_pratice.git
+
+ssh
+ssh-keygen -t rsa -C '676825173@qq.com'
+ssh-add /home/python/.ssh/id_rsa
+项目目录
+git clone https://github.com/sczaixian/learn_pratice.git
+
+Cloning into 'xxxxx'...
+client_loop: send disconnect: Broken pipe
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+ssh -v 6768***@qq.com
+
+关于VMware虚拟机上Openssh broken问题的解决
+修改/etc/ssh/ssh_config文件，在Host *条目下添加 IPQoS=throughput
+Host *
+    IPQoS=throughput
+
+systemctl restart sshd
+
+mysql
+注意版本
+wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm
+yum -y install mysql57-community-release-el7-10.noarch.rpm
+yum -y install mysql-community-server
+MySQL Connectors Community                      138 kB/s | 101 kB     00:00
+MySQL Tools Community                           319 kB/s | 590 kB     00:01
+MySQL 5.7 Community Server                      404 kB/s | 2.1 MB     00:05
+所有匹配已被模块的排除过滤过滤掉。: mysql-community-server
+错误：没有任何匹配: mysql-community-server
+rpm -ivh mysql57-community-release-el7-10.noarch.rpm
+
+systemctl start  mysqld.service
+Failed to start mysqld.service: Unit mysqld.service not found.
+首先安装mariadb-server
+yum install -y mariadb-server
+.启动服务
+systemctl start mariadb.service
+添加到开机启动
+systemctl enable mariadb.service
+安全设置，修改数据库管理员密码
+mysql_secure_installation
+root开启远程访问权限
+select  User,authentication_string,Host from user；
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456';
+flush privileges;
+
+kafka
+从https://github.com/mumrah/kafka-python/releases中下载最新的release包,
+tar -xvf kafka-python-0.9.3.tar.gz
+cd kafka-python
+python setup.py install
+
+setuptools  -->https://pypi.python.org/pypi/setuptools/
+six  -->https://pypi.org/project/six
+
+部署Django项目
+更新系统软件包
+yum update -y
+安装软件管理包和可能使用的依赖
+yum -y groupinstall "Development tools"
+yum install openssl-devel bzip2-devel expat-devel gdbm-devel readline-devel sqlite-devel
+pip install django
+pip install uwsgi
+plugins/python/uwsgi_python.h:2:10: 致命错误：Python.h：没有那个文件或目录
+#include <Python.h>
+sudo yum install python3-devel
+pip install uwsgi
+
+restframework
+pip install djangorestframework
+pip install markdown
+pip install django-filter
+git clone https://gitbub.com/encode/django-rest-framework
+
+
+
+
+
+
+
+
+
+

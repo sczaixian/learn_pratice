@@ -1,5 +1,6 @@
 
 from django.urls import path, re_path
+from rest_framework.routers import DefaultRouter
 from learn_pratice.apps.mongo_blog.views import (
     login_register as login_view, content, redirect, index)
 
