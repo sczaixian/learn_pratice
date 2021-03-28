@@ -171,12 +171,39 @@ restframework
 pip install djangorestframework
 pip install markdown
 pip install django-filter
-git clone https://gitbub.com/encode/django-rest-framework
+git clone https://github.com/encode/django-rest-framework.git
 
 
 
 
+MongoDB配置文件被命名为：mongod.conf,位于 /etc目录。 这个文件是YAML格式
 
+security:
+  authorization: enabled
+
+这个authorization选项启用了Role-Based Access Control (RBAC)，它规定了用户对数据和操作的访问规则。 如果这个选项被禁用，那么每个用户都可以访问任何数据，执行任何操作
+
+在对 MongoDB 配置文件做任何修改之后，重启 mongod 服务
+
+sudo systemctl restart mongod
+
+配置文件选项文档页面。
+https://docs.mongodb.com/manual/reference/configuration-options/
+
+创建 MongoDB 管理员
+mongo
+use admin
+db.createUser(
+  {
+    user: "python",
+    pwd: "python",
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+  }
+)
+
+quit()
+
+mongo -u python -p --authenticationDatabase admin
 
 
 

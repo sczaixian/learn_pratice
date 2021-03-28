@@ -90,5 +90,5 @@ db = options['database']
 
 这个问题解决了
 数据迁移的时候
-Python manage.py migrate app_label --database xx（database里面配置的）
+Python manage.py migrate app_label --database xx（database里面配置的,并不是数据库的名字）
 

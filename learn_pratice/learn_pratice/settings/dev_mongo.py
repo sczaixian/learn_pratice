@@ -52,6 +52,11 @@ DATABASES = {
         'NAME': 'my_mgodb',
         'CLIENT': {
             'host': '127.0.0.1',
+            'port': 27017,
+            'username': 'm1',
+            'password': '123',
+            'authSource': 'my_mgodb',
+            'authMechanism': 'SCRAM-SHA-1'
         }
     },
 }
