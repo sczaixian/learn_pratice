@@ -1,0 +1,5 @@
+选择nginx + cherrypy + bottle + jinja2 +  adminLTE + bootstrap +自己开发的数据映射。
+nginx做反向代理，
+cherrypy启动多进程(python为伪多线程),
+bottle负责单进程web,jinja2模板渲染, 
+adminLTE+bootstrap做前端插件,自己开发的数据库引擎根据对象的类型描叙自动生产类似于django的管理模板。

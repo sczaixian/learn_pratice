@@ -456,7 +456,7 @@ producer(3)
 
 print('-------------------------list_lamdba_range_enumerate----------------------------------')
 info = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-a = [i + 1 for i in range(len(info))]
+a = [i + 1 for i in info]
 b = map(lambda x: x + 1, info)
 for index, i in enumerate(info):
     info[index] += 1
@@ -533,8 +533,9 @@ print('-----------------xx---------------')
 
 
 print(math.ceil(5.3))   # 6
+# math.floor()  5
 
-print([d for d in os.listdir('.')])     # 当前目录下的文件
+print([d for d in os.listdir('..')])     # 当前目录下的文件
 
 
 '''
@@ -564,16 +565,16 @@ def triangles():
     while True:
         yield L[:]
         L.append(0)
-        L = [ L[i]+ L[i-1] for i in range(len(L))]
+        L = [L[i] + L[i-1] for i in range(len(L))]
 
 def tr2(num=1):
-    n, l1 = 0, [1]
+    l1 = [1]
     for _ in range(num):
         l1 = [sum(t) for t in zip([0]+l1, l1+[0])]
         print(l1)
 
 def tr3(num=1):
-    l1, n = [[1]], 1
+    l1 = [[1]]
     for _ in range(num):
         l1.append(list(map(lambda x, y: x+y, [0]+l1[-1], l1[-1]+[0])))
     for i in l1:

@@ -7,7 +7,7 @@ from django.utils.datastructures import MultiValueDictKeyError
 from learn_pratice.apps.mongo_blog.models.mongodb.user import User
 from django.views.decorators.http import require_http_methods
 from learn_pratice.apps.mongo_blog.utils.tools import (
-    check_request_type, is_active, email_verify, login_tool, logout_tool)
+    check_request_type, is_active, email_verify, login_tool, logout_tool, print)
 
 
 # _RE_EMAIL = re.compile(r'^[a-z0-9\.\-\_]+\@[a-z0-9\-\_]+(\.[a-z0-9\-\_]+){1,4}$')

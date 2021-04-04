@@ -78,7 +78,8 @@ def quick_sort(data):
         mark = data[0]
         little = [m for m in data if m < mark]
         big = [x for x in data if x > mark]
-        return quick_sort(little) + [mark] + quick_sort(big)
+        middle = [m for m in data if m == mark]
+        return quick_sort(little) + middle + quick_sort(big)
     else:
         return []
 
@@ -195,7 +196,7 @@ complete!
 
 
 if __name__ == '__main__':
-    data_sort = [9, 1, 22, 31, 45, 3, 6, 2, 11]
+    data_sort = [9, 9, 1, 22, 31, 45, 3, 6, 2, 11]
     print('-------------------buble_sort----------------')
     buble_sort(data_sort[:])
     print('-------------------selection_sort----------------')
@@ -203,7 +204,8 @@ if __name__ == '__main__':
     print('-------------------inner_sort----------------')
     inner_sort(data_sort[:])
     print('-------------------quick_sort----------------')
-    quick_sort(data_sort[:])
+    back = quick_sort(data_sort[:])
+    print(back)
     print('-------------------shell_sort----------------')
     shell_sort(data_sort[:])
     print('-------------------merge_sort----------------')

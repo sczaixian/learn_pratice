@@ -1,0 +1,256 @@
+[2021-03-29 15:12:38,540][MainThread:140390190676864][task_id:django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-29 15:18:35,875][MainThread:140390190676864][task_id:django.utils.autoreload][autoreload.py:222][INFO][/mnt/hgfs/share/code/learn_pratice/learn_pratice/learn_pratice/settings/dev_mongo.py changed, reloading.]
+[2021-03-29 15:18:36,426][MainThread:139989384317824][task_id:django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-29 15:20:38,975][MainThread:139989384317824][task_id:django.utils.autoreload][autoreload.py:222][INFO][/mnt/hgfs/share/code/learn_pratice/learn_pratice/learn_pratice/settings/dev_mongo.py changed, reloading.]
+[2021-03-29 15:20:39,548][MainThread:140550644775808][task_id:django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-29 15:20:51,340][MainThread:140398356102016][task_id:django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-29 15:21:41,287][Thread-1:140398085420800][task_id:django.server][basehttp.py:157][INFO]["GET /blog_mgodb/ HTTP/1.1" 200 14130]
+[2021-03-29 15:21:41,303][Thread-1:140398085420800][task_id:django.server][basehttp.py:157][INFO]["GET /static/css/bootstrap.min.css HTTP/1.1" 304 0]
+[2021-03-29 15:21:41,307][Thread-2:140398076503808][task_id:django.server][basehttp.py:157][INFO]["GET /static/font-awesome/4.2.0/css/font-awesome.min.css HTTP/1.1" 304 0]
+[2021-03-29 15:21:41,309][Thread-3:140398068111104][task_id:django.server][basehttp.py:157][INFO]["GET /static/css/ace.min.css HTTP/1.1" 304 0]
+[2021-03-29 15:21:41,310][Thread-4:140397850392320][task_id:django.server][basehttp.py:157][INFO]["GET /static/js/jquery-2.1.4.min.js HTTP/1.1" 304 0]
+[2021-03-29 15:21:41,500][Thread-1:140398085420800][task_id:django.server][basehttp.py:157][INFO]["GET /static/js/login_register.js HTTP/1.1" 200 1135]
+[2021-03-29 15:21:41,536][Thread-3:140398068111104][task_id:django.server][basehttp.py:157][INFO]["GET /static/font-awesome/4.2.0/fonts/fontawesome-webfont.woff?v=4.2.0 HTTP/1.1" 304 0]
+[2021-03-29 15:22:35,476][Thread-3:140398068111104][task_id:django][login_register.py:20][INFO][-----mongo_blog-------login---------------------]
+[2021-03-29 15:22:35,513][Thread-3:140398068111104][task_id:django][login_register.py:32][ERROR][--------------------check------------]
+[2021-03-29 15:22:35,515][Thread-3:140398068111104][task_id:django][login_register.py:33][ERROR][User object (1)]
+[2021-03-29 15:22:35,521][Thread-3:140398068111104][task_id:django][login_register.py:37][INFO][----------------remember----------------]
+[2021-03-29 15:22:35,522][Thread-3:140398068111104][task_id:django][login_register.py:38][INFO][false]
+[2021-03-29 15:22:35,522][Thread-3:140398068111104][task_id:django.server][basehttp.py:157][INFO]["POST /blog_mgodb/login/ HTTP/1.1" 200 15]
+[2021-03-29 15:23:25,476][MainThread:140398356102016][task_id:django.utils.autoreload][autoreload.py:222][INFO][/mnt/hgfs/share/code/learn_pratice/learn_pratice/learn_pratice/apps/mongo_blog/views/login_register.py changed, reloading.]
+[2021-03-29 15:23:26,012][MainThread:140023436565376][task_id:django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-29 15:24:00,669][MainThread:140023436565376][task_id:django.utils.autoreload][autoreload.py:222][INFO][/mnt/hgfs/share/code/learn_pratice/learn_pratice/learn_pratice/apps/mongo_blog/views/login_register.py changed, reloading.]
+[2021-03-29 15:24:01,192][MainThread:140447590456192][task_id:django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-29 15:24:08,417][Thread-1:140447319721728][task_id:django.request][log.py:228][ERROR][Internal Server Error: /blog_mgodb/login/]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib64/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib64/python3.6/site-packages/django/views/decorators/http.py", line 40, in inner
+    return func(request, *args, **kwargs)
+  File "/mnt/hgfs/share/code/learn_pratice/learn_pratice/learn_pratice/apps/mongo_blog/views/login_register.py", line 20, in login
+    logger.collect('-----mongo_blog-------login---------------------')
+AttributeError: 'Logger' object has no attribute 'collect'
+[2021-03-29 15:24:08,423][Thread-1:140447319721728][task_id:django.server][basehttp.py:157][ERROR]["POST /blog_mgodb/login/ HTTP/1.1" 500 19438]
+[2021-03-29 15:24:55,762][MainThread:140447590456192][task_id:django.utils.autoreload][autoreload.py:222][INFO][/mnt/hgfs/share/code/learn_pratice/learn_pratice/learn_pratice/apps/mongo_blog/views/login_register.py changed, reloading.]
+[2021-03-29 15:24:56,275][MainThread:140118976867200][task_id:django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-29 15:25:02,158][Thread-1:140118705989376][task_id:django.request][log.py:228][ERROR][Internal Server Error: /blog_mgodb/login/]
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib64/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib64/python3.6/site-packages/django/views/decorators/http.py", line 40, in inner
+    return func(request, *args, **kwargs)
+  File "/mnt/hgfs/share/code/learn_pratice/learn_pratice/learn_pratice/apps/mongo_blog/views/login_register.py", line 20, in login
+    logger.collect('-----mongo_blog-------login---------------------')
+AttributeError: 'Logger' object has no attribute 'collect'
+[2021-03-29 15:25:02,162][Thread-1:140118705989376][task_id:django.server][basehttp.py:157][ERROR]["POST /blog_mgodb/login/ HTTP/1.1" 500 19438]
+[2021-03-29 15:26:13,820][MainThread:140118976867200][task_id:django.utils.autoreload][autoreload.py:222][INFO][/mnt/hgfs/share/code/learn_pratice/learn_pratice/learn_pratice/apps/mongo_blog/views/login_register.py changed, reloading.]
+[2021-03-29 15:26:14,337][MainThread:140426959481728][task_id:django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-29 15:26:20,688][Thread-1:140426688763648][task_id:django.server][basehttp.py:157][INFO]["POST /blog_mgodb/login/ HTTP/1.1" 200 15]
+[2021-03-29 15:30:01,613][MainThread:140426959481728][task_id:django.utils.autoreload][autoreload.py:222][INFO][/mnt/hgfs/share/code/learn_pratice/learn_pratice/learn_pratice/settings/dev_mongo.py changed, reloading.]
+[2021-03-29 15:30:02,249][django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-30 00:41:25,276][django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-30 00:43:51,172][django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-30 00:54:27,895][django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-30 00:55:50,701][django.utils.autoreload][autoreload.py:222][INFO][/mnt/hgfs/share/code/learn_pratice/learn_pratice/learn_pratice/apps/mongo_blog/utils/login_proxy.py changed, reloading.]
+[2021-03-30 00:55:51,250][django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-30 01:00:02,050][django.utils.autoreload][autoreload.py:222][INFO][/mnt/hgfs/share/code/learn_pratice/learn_pratice/learn_pratice/settings/dev_mongo.py changed, reloading.]
+[2021-03-30 01:00:02,577][django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-30 07:39:32,953][django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-30 07:42:52,326][django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-30 07:45:46,083][django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-30 07:48:41,338][django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-30 07:51:00,802][django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-30 07:52:14,015][django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-30 08:07:35,755][django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-30 08:07:53,155][django.server][basehttp.py:157][INFO]["GET /blog_mgodb/ HTTP/1.1" 200 14130]
+[2021-03-30 08:08:07,817][django.request][log.py:228][ERROR][Internal Server Error: /blog_mgodb/register/]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/djongo/sql2mongo/query.py", line 856, in parse
+    return handler(self, statement)
+  File "/usr/local/lib/python3.6/site-packages/djongo/sql2mongo/query.py", line 928, in _insert
+    query.execute()
+  File "/usr/local/lib/python3.6/site-packages/djongo/sql2mongo/query.py", line 397, in execute
+    res = self.db[self.left_table].insert_many(docs, ordered=False)
+  File "/usr/local/lib64/python3.6/site-packages/pymongo/collection.py", line 761, in insert_many
+    blk.execute(write_concern, session=session)
+  File "/usr/local/lib64/python3.6/site-packages/pymongo/bulk.py", line 528, in execute
+    return self.execute_command(generator, write_concern, session)
+  File "/usr/local/lib64/python3.6/site-packages/pymongo/bulk.py", line 363, in execute_command
+    _raise_bulk_write_error(full_result)
+  File "/usr/local/lib64/python3.6/site-packages/pymongo/bulk.py", line 140, in _raise_bulk_write_error
+    raise BulkWriteError(full_result)
+pymongo.errors.BulkWriteError: batch op errors occurred, full error: {'writeErrors': [{'index': 0, 'code': 11000, 'keyPattern': {'blog_id': 1}, 'keyValue': {'blog_id': None}, 'errmsg': 'E11000 duplicate key error collection: my_mgodb.mongo_blog_user index: blog_id_1 dup key: { blog_id: null }', 'op': {'user_id': 3, 'username': '002', 'password': '002', 'nice_name': None, 'email': '002@qq.com', 'phone_num': 0, 'identity_card': None, 'introduce': None, 'blog_id': None, 'photo': 'default.jpg', 'is_active': True, '_id': ObjectId('6062dc672948510eb6203c51')}}], 'writeConcernErrors': [], 'nInserted': 0, 'nUpserted': 0, 'nMatched': 0, 'nModified': 0, 'nRemoved': 0, 'upserted': []}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/djongo/cursor.py", line 56, in execute
+    params)
+  File "/usr/local/lib/python3.6/site-packages/djongo/sql2mongo/query.py", line 783, in __init__
+    self._query = self.parse()
+  File "/usr/local/lib/python3.6/site-packages/djongo/sql2mongo/query.py", line 868, in parse
+    raise exe from e
+djongo.exceptions.SQLDecodeError: 
+
+	Keyword: None
+	Sub SQL: None
+	FAILED SQL: INSERT INTO "mongo_blog_user" ("username", "password", "nice_name", "email", "phone_num", "identity_card", "introduce", "blog_id", "photo", "is_active") VALUES (%(0)s, %(1)s, %(2)s, %(3)s, %(4)s, %(5)s, %(6)s, %(7)s, %(8)s, %(9)s)
+	Params: ['002', '002', None, '002@qq.com', 0, None, None, None, 'default.jpg', True]
+	Version: 1.3.4
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.6/site-packages/djongo/cursor.py", line 59, in execute
+    raise db_exe from e
+djongo.database.DatabaseError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib64/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/mnt/hgfs/share/code/learn_pratice/learn_pratice/learn_pratice/apps/mongo_blog/views/login_register.py", line 55, in register
+    User.objects.create(username=username, password=password, email=email)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/models/query.py", line 433, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/models/base.py", line 746, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/models/base.py", line 784, in save_base
+    force_update, using, update_fields,
+  File "/usr/local/lib64/python3.6/site-packages/django/db/models/base.py", line 887, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/models/base.py", line 926, in _do_insert
+    using=using, raw=raw,
+  File "/usr/local/lib64/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/models/query.py", line 1204, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/models/sql/compiler.py", line 1391, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib64/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.6/site-packages/djongo/cursor.py", line 59, in execute
+    raise db_exe from e
+django.db.utils.DatabaseError
+[2021-03-30 08:08:07,824][django.server][basehttp.py:157][ERROR]["POST /blog_mgodb/register/ HTTP/1.1" 500 226003]
+[2021-03-30 08:09:28,270][django.utils.autoreload][autoreload.py:222][INFO][/mnt/hgfs/share/code/learn_pratice/learn_pratice/learn_pratice/apps/mongo_blog/views/login_register.py changed, reloading.]
+[2021-03-30 08:09:29,004][django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-30 08:11:19,870][django.utils.autoreload][autoreload.py:222][INFO][/mnt/hgfs/share/code/learn_pratice/learn_pratice/learn_pratice/apps/mongo_blog/views/login_register.py changed, reloading.]
+[2021-03-30 08:11:20,383][django.utils.autoreload][autoreload.py:598][INFO][Watching for file changes with StatReloader]
+[2021-03-30 08:15:59,589][django.server][basehttp.py:157][INFO]["POST /blog_mgodb/login/ HTTP/1.1" 200 15]
+[2021-03-30 08:16:34,280][django.request][log.py:228][ERROR][Internal Server Error: /blog_mgodb/register/]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/djongo/sql2mongo/query.py", line 856, in parse
+    return handler(self, statement)
+  File "/usr/local/lib/python3.6/site-packages/djongo/sql2mongo/query.py", line 928, in _insert
+    query.execute()
+  File "/usr/local/lib/python3.6/site-packages/djongo/sql2mongo/query.py", line 397, in execute
+    res = self.db[self.left_table].insert_many(docs, ordered=False)
+  File "/usr/local/lib64/python3.6/site-packages/pymongo/collection.py", line 761, in insert_many
+    blk.execute(write_concern, session=session)
+  File "/usr/local/lib64/python3.6/site-packages/pymongo/bulk.py", line 528, in execute
+    return self.execute_command(generator, write_concern, session)
+  File "/usr/local/lib64/python3.6/site-packages/pymongo/bulk.py", line 363, in execute_command
+    _raise_bulk_write_error(full_result)
+  File "/usr/local/lib64/python3.6/site-packages/pymongo/bulk.py", line 140, in _raise_bulk_write_error
+    raise BulkWriteError(full_result)
+pymongo.errors.BulkWriteError: batch op errors occurred, full error: {'writeErrors': [{'index': 0, 'code': 11000, 'keyPattern': {'blog_id': 1}, 'keyValue': {'blog_id': None}, 'errmsg': 'E11000 duplicate key error collection: my_mgodb.mongo_blog_user index: blog_id_1 dup key: { blog_id: null }', 'op': {'user_id': 4, 'username': '002', 'password': '002', 'nice_name': None, 'email': '002@qq.com', 'phone_num': 0, 'identity_card': None, 'introduce': None, 'blog_id': None, 'photo': 'default.jpg', 'is_active': True, '_id': ObjectId('6062de622aa1ff8f5d2a5631')}}], 'writeConcernErrors': [], 'nInserted': 0, 'nUpserted': 0, 'nMatched': 0, 'nModified': 0, 'nRemoved': 0, 'upserted': []}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/djongo/cursor.py", line 56, in execute
+    params)
+  File "/usr/local/lib/python3.6/site-packages/djongo/sql2mongo/query.py", line 783, in __init__
+    self._query = self.parse()
+  File "/usr/local/lib/python3.6/site-packages/djongo/sql2mongo/query.py", line 868, in parse
+    raise exe from e
+djongo.exceptions.SQLDecodeError: 
+
+	Keyword: None
+	Sub SQL: None
+	FAILED SQL: INSERT INTO "mongo_blog_user" ("username", "password", "nice_name", "email", "phone_num", "identity_card", "introduce", "blog_id", "photo", "is_active") VALUES (%(0)s, %(1)s, %(2)s, %(3)s, %(4)s, %(5)s, %(6)s, %(7)s, %(8)s, %(9)s)
+	Params: ['002', '002', None, '002@qq.com', 0, None, None, None, 'default.jpg', True]
+	Version: 1.3.4
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.6/site-packages/djongo/cursor.py", line 59, in execute
+    raise db_exe from e
+djongo.database.DatabaseError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib64/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/mnt/hgfs/share/code/learn_pratice/learn_pratice/learn_pratice/apps/mongo_blog/views/login_register.py", line 55, in register
+    User.objects.create(username=username, password=password, email=email)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/models/query.py", line 433, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/models/base.py", line 746, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/models/base.py", line 784, in save_base
+    force_update, using, update_fields,
+  File "/usr/local/lib64/python3.6/site-packages/django/db/models/base.py", line 887, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/models/base.py", line 926, in _do_insert
+    using=using, raw=raw,
+  File "/usr/local/lib64/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/models/query.py", line 1204, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/models/sql/compiler.py", line 1391, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib64/python3.6/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib64/python3.6/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.6/site-packages/djongo/cursor.py", line 59, in execute
+    raise db_exe from e
+django.db.utils.DatabaseError
+[2021-03-30 08:16:34,287][django.server][basehttp.py:157][ERROR]["POST /blog_mgodb/register/ HTTP/1.1" 500 226002]

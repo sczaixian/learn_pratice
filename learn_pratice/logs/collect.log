@@ -1,0 +1,32 @@
+-----mongo_blog-------login---------------------
+----------------content-----------------
+<QueryDict: {'username': ['001'], 'password': ['001'], 'remember': ['false'], 'csrfmiddlewaretoken': ['FlAlHEcB8PaaLd6GroUiuWYhNlrVVxgztSaYBdgYVO36rlt7emPqaEX5Ng9bDIMj']}>
+--------------------check------------
+User object (1)
+----------------remember----------------
+false
+-----2---response-------------
+b'{"user": "001"}'
+-----mongo_blog----longin_check-----------
+-----mongo_blog----longin_check-----------
+-----mongo_blog----longin_check-----------
+-----mongo_blog----longin_check-----------
+-----mongo_blog----longin_check-----------
+-----mongo_blog----longin_check-----------
+-----mongo_blog----longin_check-----------
+-----mongo_blog----longin_check-----------
+----------mongo_blog-----register--------------
+<QueryDict: {'csrfmiddlewaretoken': ['YbP2vRYVftLzqXA8D2ltMm5zNo8UCCMAMIpFpq2i2sEv65Xzq0gBs44nNjQakNik'], 'email': ['002@qq.com'], 'username': ['002'], 'password': ['002'], 're_password': ['002'], 'sumit': ['']}>
+-----mongo_blog----longin_check-----------
+-----mongo_blog----longin_check-----------
+-----mongo_blog-------login---------------------
+----------------content-----------------
+<QueryDict: {'username': ['001'], 'password': ['001'], 'remember': ['false'], 'csrfmiddlewaretoken': ['YbP2vRYVftLzqXA8D2ltMm5zNo8UCCMAMIpFpq2i2sEv65Xzq0gBs44nNjQakNik']}>
+--------------------check------------
+User object (1)
+----------------remember----------------
+false
+-----2---response-------------
+b'{"user": "001"}'
+----------mongo_blog-----register--------------
+<QueryDict: {'csrfmiddlewaretoken': ['YbP2vRYVftLzqXA8D2ltMm5zNo8UCCMAMIpFpq2i2sEv65Xzq0gBs44nNjQakNik'], 'email': ['002@qq.com'], 'username': ['002'], 'password': ['002'], 're_password': ['002'], 'sumit': ['']}>

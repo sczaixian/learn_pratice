@@ -10,7 +10,7 @@ class UserInfo(models.Model):
     phone_num = models.IntegerField(default=0, verbose_name='手机号')
     identity_card = models.CharField(max_length=20, null=True, blank=True, verbose_name='身份证号')
     user_discription = models.CharField(max_length=256, null=True, blank=True, verbose_name='自我描述')
-    blog = models.OneToOneField(to='Blog', to_field='blog_id', null=True, on_delete=models.CASCADE)
+    # blog = models.OneToOneField(to='Blog', to_field='blog_id', null=True, on_delete=models.CASCADE)
     photo = models.ImageField(upload_to=user_directory_path, default='default.jpg', verbose_name='头像')
 
     class Meta:

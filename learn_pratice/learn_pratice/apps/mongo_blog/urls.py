@@ -1,12 +1,20 @@
 
-from django.urls import path, re_path
-from rest_framework.routers import DefaultRouter
-from learn_pratice.apps.mongo_blog.views import (
+from django.urls import path, include
+from .views import (
     login_register as login_view, content, redirect, index)
 
-# from django.conf.urls import url
+from rest_framework import routers
+from learn_pratice.apps.mongo_blog.views.drf import drf_view
+
+router = routers.DefaultRouter()
+router.register(r'users', drf_view.UserViewSet)
+
 
 urlpatterns =[
+
+    path('user_list/', drf_view.user_list, name='user_list'),
+    path('rest_fw/', include(router.urls)),
+
     path('', index.index, name='index'),
 
     path('register/', login_view.register, name='register'),

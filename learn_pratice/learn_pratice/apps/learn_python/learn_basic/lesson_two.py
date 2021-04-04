@@ -227,7 +227,7 @@ ab+	以二进制格式打开一个文件用于追加。如果该文件已存在�
 '''
 
 # 列出当前目录下的所有目录
-print([x for x in os.listdir('.') if os.path.isdir(x)])
+print([x for x in os.listdir('..') if os.path.isdir(x)])
 # 列出所有的.json文件
 print([x for x in os.listdir('/home/python') if os.path.splitext(x)[1] == '.json'])
 

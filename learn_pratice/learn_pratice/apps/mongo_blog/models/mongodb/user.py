@@ -96,7 +96,7 @@ class User(models.Model):
     phone_num = models.IntegerField(default=0, verbose_name='手机号')
     identity_card = models.CharField(max_length=20, null=True, blank=True, verbose_name='身份证号')
     introduce = models.CharField(max_length=256, null=True, blank=True, verbose_name='自我描述')
-    blog = models.OneToOneField(to='Blog', to_field='blog_id', null=True, on_delete=models.CASCADE)
+    # blog = models.OneToOneField(to='Blog', to_field='blog_id', null=True, on_delete=models.CASCADE)
     photo = models.ImageField(upload_to=user_directory_path, default='default.jpg', verbose_name='头像')
     is_active = models.BooleanField(_('active'), default=True)
 

@@ -34,35 +34,35 @@ print(names_longest[0])
 '''
 
 
-class Stack(object):
-    def __init__(self):
-        self.stack = []
-
-    def pop(self):
-        if self.is_empty():
-            # raise Exception('empty')
-            pass
-        else:
-            self.stack.pop()
-
-    def push(self, value):
-        self.stack.append(value)
-
-    def is_empty(self):
-        return not bool(self.stack)
-
-    def top(self):
-        if self.is_empty():
-            # raise Exception('empty')
-            pass
-        else:
-            return self.stack[-1]
-
-    def clear(self):
-        self.stack.clear()
-
-    def size(self):
-        return len(self.stack)
+# class Stack(object):
+#     def __init__(self):
+#         self.stack = []
+#
+#     def pop(self):
+#         if self.is_empty():
+#             # raise Exception('empty')
+#             pass
+#         else:
+#             self.stack.pop()
+#
+#     def push(self, value):
+#         self.stack.append(value)
+#
+#     def is_empty(self):
+#         return not bool(self.stack)
+#
+#     def top(self):
+#         if self.is_empty():
+#             # raise Exception('empty')
+#             pass
+#         else:
+#             return self.stack[-1]
+#
+#     def clear(self):
+#         self.stack.clear()
+#
+#     def size(self):
+#         return len(self.stack)
 
 
 
@@ -109,31 +109,31 @@ socket
 '''
 
 # 明确配置变量
-ip_port = ('127.0.0.1', 8080)
-back_log = 5
-buffer_size = 1024
-# 创建一个TCP套接字
-ser = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # 套接字类型AF_INET, socket.SOCK_STREAM   tcp协议，基于流式的协议
-ser.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # 对socket的配置重用ip和端口号
-# 绑定端口号
-ser.bind(ip_port)  # 写哪个ip就要运行在哪台机器上
-# 设置半连接池
-ser.listen(back_log)  # 最多可以连接多少个客户端
-while 1:
-    # 阻塞等待，创建连接
-    con, address = ser.accept()  # 在这个位置进行等待，监听端口号
-    while 1:
-        try:
-            # 接受套接字的大小，怎么发就怎么收
-            msg = con.recv(buffer_size)
-            if msg.decode('utf-8') == '1':
-                # 断开连接
-                con.close()
-            print('服务器收到消息', msg.decode('utf-8'))
-        except Exception as e:
-            break
-# 关闭服务器
-ser.close()
+# ip_port = ('127.0.0.1', 8080)
+# back_log = 5
+# buffer_size = 1024
+# # 创建一个TCP套接字
+# ser = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # 套接字类型AF_INET, socket.SOCK_STREAM   tcp协议，基于流式的协议
+# ser.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # 对socket的配置重用ip和端口号
+# # 绑定端口号
+# ser.bind(ip_port)  # 写哪个ip就要运行在哪台机器上
+# # 设置半连接池
+# ser.listen(back_log)  # 最多可以连接多少个客户端
+# while 1:
+#     # 阻塞等待，创建连接
+#     con, address = ser.accept()  # 在这个位置进行等待，监听端口号
+#     while 1:
+#         try:
+#             # 接受套接字的大小，怎么发就怎么收
+#             msg = con.recv(buffer_size)
+#             if msg.decode('utf-8') == '1':
+#                 # 断开连接
+#                 con.close()
+#             print('服务器收到消息', msg.decode('utf-8'))
+#         except Exception as e:
+#             break
+# # 关闭服务器
+# ser.close()
 
 
 
@@ -158,8 +158,129 @@ ser.close()
 
 
 
+'''
+    Fibonacci
+'''
+# def fib(n):
+#     if n <= 1:
+#         return n
+#     return fib(n - 1) + fib(n - 2)
+
+# import numpy as np
+#
+# ### 1
+# def fib_matrix(n):
+#     for i in range(n):
+#         res = pow((np.matrix([[1, 1], [1, 0]], dtype='int64')), i) * np.matrix([[1], [0]])
+#         print(int(res[0][0]))
+#
+#
+# # 调用
+# fib_matrix(5)
+#
+# ### 2
+# # 使用矩阵计算斐波那契数列
+# def Fibonacci_Matrix_tool(n):
+#     Matrix = np.matrix("1 1;1 0", dtype='int64')
+#     # 返回是matrix类型
+#     return np.linalg.matrix_power(Matrix, n)
+#
+# def Fibonacci_Matrix(n):
+#     result_list = []
+#     for i in range(0, n):
+#         result_list.append(np.array(Fibonacci_Matrix_tool(i))[0][0])
+#     return result_list
+#
+# # 调用
+# print(Fibonacci_Matrix(5))
+#
+# ### pow 速度 比 双**号快, np.linalg.matrix_power也是一种方法
+
+
+'''第四种类实现内部魔法方法'''
+# class Fibonacci(object):
+#     """斐波那契数列迭代器"""
+#
+#     def __init__(self, n):
+#         """
+#         :param n:int 指 生成数列的个数
+#         """
+#         self.n = n
+#         # 保存当前生成到的数据列的第几个数据，生成器中性质，记录位置，下一个位置的数据
+#         self.current = 0
+#         # 两个初始值
+#         self.a = 0
+#         self.b = 1
+#
+#     def __next__(self):
+#         """当使用next()函数调用时，就会获取下一个数"""
+#         if self.current < self.n:
+#             self.a, self.b = self.b, self.a + self.b
+#             self.current += 1
+#             return self.a
+#         else:
+#             raise StopIteration
+#
+#     def __iter__(self):
+#         """迭代器的__iter__ 返回自身即可"""
+#         return self
+#
+#
+# if __name__ == '__main__':
+#     fib = Fibonacci(5)
+#     for num in fib:
+#         print(num)
 
 
 
 
+'''第三种生成器'''
+# def fib_yield_while(max):
+#     a, b = 0, 1
+#     while max > 0:
+#         a, b = b, a + b
+#     max -= 1
+#     yield a
 
+# def fib_yield_for(n):
+#     a, b = 0, 1
+#     for _ in range(n):
+#         a, b = b, a + b
+#         yield a
+#
+#
+# for i in fib_yield_for(10):
+#     print(i, end=' ')
+
+# def fib_loop_while(n):
+#     a, b = 1, 1
+#     for _ in range(n):
+#         a, b = b, a + b
+#     return a
+#
+# def fib_recur(n):
+#     # 断言
+#     assert n >= 0, "n > 0"
+#     if n <= 1:
+#         return n
+#     return fib_recur(n - 1) + fib_recur(n - 2)
+#
+#
+# for i in range(5):
+#     print(fib_loop_while(i), end=' ')
+# print()
+# for i in range(5):
+#     print(fib_recur(i), end=' ')
+# print()
+# print(fib_recur(-1))
+
+
+data = [(1, 'a'),(2, 'b'),(5, 'c'),(3, 'd'),(4, 'e')]
+
+print(sorted(data, key=lambda x: x[0]))
+print(sorted(data, key=lambda x: x[1]))
+
+l1 = []
+l2 = []
+l1.append(l2)
+l2.append(l1)

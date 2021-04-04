@@ -208,4 +208,5 @@ mongo -u python -p --authenticationDatabase admin
 
 
 
-
+create user 'username'@'host' identified by 'password';
+grant all privileges on databases.* to 'user'@'host';

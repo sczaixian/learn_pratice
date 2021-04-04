@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.core import serializers
 from django.http import JsonResponse
 from learn_pratice.apps.mongo_blog.models.mongodb.article import Article
-from learn_pratice.apps.mongo_blog.utils.tools import paginator_tool
+from learn_pratice.apps.mongo_blog.utils.tools import paginator_tool, print
 
 
 def add_article(request):

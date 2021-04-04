@@ -1,5 +1,6 @@
 
 from django.shortcuts import render, redirect
+from learn_pratice.apps.mongo_blog.utils.tools import (print)
 
 
 def init_blog(request):

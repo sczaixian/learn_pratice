@@ -2,6 +2,7 @@ import os
 import uuid
 import hashlib
 # import environ
+import logging
 from django.template import loader
 from django.conf import settings
 from django.core.cache import cache, caches
@@ -147,3 +148,8 @@ def paginator_tool(request, data_list):
         # 如果请求的页数不在合法的页数范围内，返回结果的最后一页。
         articles = paginator.page(paginator.num_pages)
     return articles
+
+
+def print(log):
+    logger = logging.getLogger('collect')
+    logger.info(log)

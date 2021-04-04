@@ -1,0 +1,13 @@
+
+
+yum list java*
+ yum install java-11-openjdk.x86_64
+pyspark --master local[4]
+ wget https://mirrors.tuna.tsinghua.edu.cn/apache/kafka/2.7.0/kafka_2.12-2.7.0.tgz
+tar zxvf kafka_2.12-2.7.0.tgz
+ mv kafka_2.12-2.7.0 kafka
+ bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
+  bin/kafka-server-start.sh config/server.properties
+ bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+ kafka]$ bin/kafka-console-producer.sh --broker-list localhost:9092 -topic test
+ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning

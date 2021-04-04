@@ -9,7 +9,7 @@ from django.views.decorators.http import require_http_methods
 from learn_pratice.apps.mongo_blog.models.mongodb.article import Article
 from learn_pratice.apps.mongo_blog.models.mongodb.user import User
 from learn_pratice.apps.mongo_blog.utils.tools import (
-    is_session_exists, paginator_tool)
+    is_session_exists, paginator_tool, print)
 
 
 def login_check(fun):

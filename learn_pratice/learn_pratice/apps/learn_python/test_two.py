@@ -3,6 +3,8 @@ import socket
 import base64
 import hashlib
 from io import BytesIO
+from threading import Lock
+
 
 def socket_client():
     p = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -18,7 +20,6 @@ def socket_client():
     p.close()
 
 
-from threading import Lock
 class Singleton(object):
     _instance_lock = Lock()
 

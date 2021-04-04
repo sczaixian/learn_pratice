@@ -10,6 +10,7 @@ $("#btn_login").click(function () {
         },
         success: function (data) {
             console.log(data);
+            console.log(data.serialize())
             if (data.user) {
                 window.location.href = '/blog_mgodb/'
             } else {
