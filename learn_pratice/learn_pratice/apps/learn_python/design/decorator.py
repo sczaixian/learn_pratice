@@ -103,3 +103,18 @@ def add(a, b):
     return a+b
 
 print(add(3, 5))
+
+
+
+def xx(fun):
+    print('------xx-----')
+    def wp(*args, **kwargs):
+        print('-----wp-----')
+        # 如果这里不返回fun则aa()中的内容不会执行
+        fun(*args, **kwargs)
+        # return fun(*args, **kwargs)
+    return wp
+@xx
+def aa():
+    print('-----aa------')
+aa()

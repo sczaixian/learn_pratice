@@ -110,3 +110,5 @@ while True:
     else:
         print('恭喜你，抢购成功')
         break
+
+

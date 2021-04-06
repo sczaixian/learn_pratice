@@ -92,9 +92,9 @@ CACHES = {
         # 这里给出的是路径，但是更多时候是在项目根目录创建个文件夹，然后直接
         # os.path.join(BASE_DIR，‘cache/file’)
     },
-    'redis': {
+    'python_redis': {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379",
+        "LOCATION": "python_redis://127.0.0.1:6379",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
             "CONNECTION_POOL_KWARGS": {"max_connections": 100},

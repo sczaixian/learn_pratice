@@ -6,8 +6,7 @@ import subprocess
 from gevent import monkey;monkey.patch_all()
 from gevent.pool import Pool as gevent_pool
 from functools import partial
-from multiprocessing import Process, Pool
-from multiprocessing import Process, Queue
+from multiprocessing import Process, Pool, Queue
 
 
 # print('get p_id: ', os.getpid())

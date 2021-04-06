@@ -540,7 +540,7 @@ print([d for d in os.listdir('..')])     # 当前目录下的文件
 
 '''
 generator
-杨辉三角
+ 杨辉三角
 '''
 def test_generator():
     list = [x for x in range(10)]
@@ -560,12 +560,17 @@ print(gen)
 for i in test_generator():
     print('-----', i)
 
-def triangles():
+def triangles(n):
     L=[1]
-    while True:
+    for _ in range(n):
         yield L[:]
         L.append(0)
-        L = [L[i] + L[i-1] for i in range(len(L))]
+        L = [L[i] + L[i - 1] for i in range(len(L))]
+        # print(L, end='')
+    # while True:
+    #     yield L[:]
+    #     L.append(0)
+    #     L = [L[i] + L[i-1] for i in range(len(L))]
 
 def tr2(num=1):
     l1 = [1]
@@ -574,16 +579,17 @@ def tr2(num=1):
         print(l1)
 
 def tr3(num=1):
-    l1 = [[1]]
+    tr_list = [1]
     for _ in range(num):
-        l1.append(list(map(lambda x, y: x+y, [0]+l1[-1], l1[-1]+[0])))
-    for i in l1:
-        print(i)
+        tr_list = list(map(lambda x, y: x + y, [0] + tr_list, tr_list + [0]))
+        print(tr_list)
 
-t = triangles()
-for x in range(5):
-    print(next(t))
-print('---------------------------')
+# t = triangles()
+# for x in range(5):
+#     print(next(t))
+for x in triangles(5):
+    print(x)
+print('----------triangles-----------------')
 tr2(5)
 print('---------------------------')
 tr3(5)
@@ -693,14 +699,38 @@ print('\n'.join([' '.join(['%d*%d=%-2d' % (i, j, i * j) for i in range(1, j + 1)
 
 
 
+'''
+
+总结： 1、list、tuple是有序列表；dict、set是无序列表
+
+　　   2、list元素可变、tuple元素不可变
+
+　　   3、dict和set的key值不可变，唯一性
+
+　　   4、set只有key没有value
+
+　　   5、set的用途：去重、并集、交集等
+
+　　   6、list、tuple：+、*、索引、切片、检查成员等
+
+　　　 7、dict查询效率高，但是消耗内存多；list、tuple查询效率低、但是消耗内存少
+
+'''
 
 
 
+x1 = {1, 2, 3}
+x2 = {3, 4, 5}
+#并集
+print(x1 | x2) # 或者x1.union(x2)
+#交集
+print(x1 & x2)	# 或者x1.intersection(x2)
+#其他操作
+print(x1 - x2) # x1.difference(x2) x1中有但x2中没有
+print(x1 ^ x2) # 在x1和x2中不同时都有的
 
 
-
-
-
+'''https://blog.csdn.net/qq_36551226/article/details/104174496'''
 
 
 
